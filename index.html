@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Restaurant SHASI — Lake Shasi, Ulcinj</title>
+<meta name="description" content="Restaurant SHASI on Lake Shasi, Ulcinj, Montenegro — fresh fish specialities, rooms and auto-camp, since 2002." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%2316302E'/%3E%3Ctext x='50' y='66' font-size='55' text-anchor='middle'%3E%F0%9F%90%9F%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <div class="header-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40"><path d="M4 20c4-7 10-11 16-11s12 4 16 11c-4 7-10 11-16 11S8 27 4 20Z" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="14" cy="18" r="1.6" fill="currentColor"/></svg>
+      </span>
+      <span class="brand-text"><strong>SHASI</strong><small data-i18n="hero_tag">Since 2002</small></span>
+    </a>
+
+    <nav class="main-nav" id="main-nav">
+      <a href="#top" data-i18n="nav_home">Home</a>
+      <a href="#about" data-i18n="nav_about">About Us</a>
+      <a href="#moments" data-i18n="nav_moments">Moments</a>
+      <a href="#menu" data-i18n="nav_menu">Menu</a>
+      <a href="#activities" data-i18n="nav_activities">Activities</a>
+      <a href="#reservations" data-i18n="nav_reservations">Reserve</a>
+      <a href="#location" data-i18n="nav_location">Location</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang-switch">
+        <button class="lang-btn" id="lang-btn" aria-haspopup="listbox" aria-expanded="false">
+          <span id="lang-current">EN</span>
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <ul class="lang-list" id="lang-list" role="listbox"></ul>
+      </div>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- CINEMATIC HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-visual" aria-hidden="true">
+      <canvas id="hero-canvas"></canvas>
+      <video id="hero-video" muted loop autoplay playsinline preload="none"></video>
+      <div class="hero-visual-fade"></div>
+    </div>
+    <div class="section-inner hero-content-wrap">
+      <div class="hero-copy">
+        <span class="eyebrow" data-i18n="hero_tag">Since 2002</span>
+        <h1 data-i18n="hero_title">Restaurant SHASI</h1>
+        <p data-i18n="hero_subtitle">Fresh fish, lakeside serenity, and family hospitality on Lake Shasi</p>
+        <div class="hero-actions">
+          <a href="#menu" class="btn btn-primary" data-i18n="cta_menu">View Menu</a>
+          <a id="hero-book" href="#" target="_blank" rel="noopener" class="btn btn-ghost" data-i18n="cta_book">Book a Room</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-inner about-grid">
+      <div class="about-copy">
+        <span class="eyebrow eyebrow-dark" data-i18n="about_title">About Us</span>
+        <p id="about-text" class="about-text"></p>
+      </div>
+      <div class="about-media" aria-hidden="true">
+        <svg viewBox="0 0 360 460" class="lake-illustration">
+          <rect x="0" y="0" width="360" height="460" fill="none"/>
+          <path d="M0 300 C 60 270 100 320 180 300 C 260 280 300 320 360 300 V460 H0 Z" fill="var(--dusk)"/>
+          <path d="M0 340 C 60 320 110 355 180 335 C 250 315 300 350 360 335 V460 H0 Z" fill="var(--dusk-deep)"/>
+          <g stroke="var(--reed-gold)" stroke-width="2" stroke-linecap="round" opacity="0.85">
+            <path class="reed" d="M40 300 C 34 260 46 230 40 190"/>
+            <path class="reed" d="M58 305 C 54 270 64 245 60 210"/>
+            <path class="reed" d="M300 296 C 296 256 308 226 302 186"/>
+            <path class="reed" d="M320 302 C 316 268 326 240 322 206"/>
+          </g>
+          <circle cx="255" cy="95" r="34" fill="var(--reed-gold)" opacity="0.9"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOMENTS -->
+  <section class="section section-alt" id="moments">
+    <div class="section-inner">
+      <div class="moments-head">
+        <span class="eyebrow eyebrow-dark" data-i18n="moments_title">From the Lake</span>
+        <p data-i18n="moments_subtitle">A few scenes from life at SHASI.</p>
+      </div>
+      <div id="moments-embeds" class="moments-grid"></div>
+      <a id="moments-fallback" class="moments-fallback" href="#" target="_blank" rel="noopener" hidden>
+        <span class="moments-fallback-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.7 4.92 4.92.06 1.25.07 1.62.07 4.81s-.01 3.56-.07 4.81c-.15 3.2-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07s-3.6-.01-4.85-.07c-3.26-.15-4.77-1.72-4.92-4.92-.06-1.25-.07-1.62-.07-4.81s.02-3.56.07-4.81C2.38 3.97 3.9 2.42 7.15 2.27 8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.14 0-3.5.01-4.74.07-2.27.1-3.34 1.19-3.44 3.44C3.76 8.75 3.75 9.11 3.75 12s.01 3.25.07 4.49c.1 2.25 1.16 3.34 3.44 3.44 1.24.06 1.6.07 4.74.07s3.5-.01 4.74-.07c2.27-.1 3.34-1.18 3.44-3.44.06-1.24.07-1.6.07-4.49s-.01-3.25-.07-4.49c-.1-2.25-1.17-3.34-3.44-3.44C15.5 4.01 15.14 4 12 4zm0 3.7a4.3 4.3 0 1 1 0 8.6 4.3 4.3 0 0 1 0-8.6zm0 1.8a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm4.5-2.1a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
+        </span>
+        <span id="moments-cta-text" data-i18n="moments_cta">Follow @restaurantshasii</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="section" id="menu">
+    <div class="section-inner">
+      <span class="eyebrow eyebrow-dark" data-i18n="menu_title">Our Menu</span>
+
+      <div class="menu-frame">
+        <span class="frame-corner tl" aria-hidden="true"><svg viewBox="0 0 42 42" fill="none"><path d="M2 2C12 6 16 16 13 27" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M2 2C9 9 10 18 6 25" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M2 2C16 4 24 11 26 22" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><g transform="translate(26,22)" fill="currentColor"><circle cx="0" cy="-3.2" r="2.1"/><circle cx="2.8" cy="-1" r="2.1"/><circle cx="1.7" cy="2.6" r="2.1"/><circle cx="-1.7" cy="2.6" r="2.1"/><circle cx="-2.8" cy="-1" r="2.1"/><circle cx="0" cy="0" r="1.3" fill-opacity=".6"/></g><g transform="translate(13,27)" fill="currentColor"><circle cx="0" cy="-2.3" r="1.5" fill-opacity=".9"/><circle cx="2" cy="-0.7" r="1.5" fill-opacity=".9"/><circle cx="1.2" cy="1.9" r="1.5" fill-opacity=".9"/><circle cx="-1.2" cy="1.9" r="1.5" fill-opacity=".9"/><circle cx="-2" cy="-0.7" r="1.5" fill-opacity=".9"/></g></svg></span>
+        <span class="frame-corner tr" aria-hidden="true"><svg viewBox="0 0 42 42" fill="none"><path d="M2 2C12 6 16 16 13 27" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M2 2C9 9 10 18 6 25" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M2 2C16 4 24 11 26 22" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><g transform="translate(26,22)" fill="currentColor"><circle cx="0" cy="-3.2" r="2.1"/><circle cx="2.8" cy="-1" r="2.1"/><circle cx="1.7" cy="2.6" r="2.1"/><circle cx="-1.7" cy="2.6" r="2.1"/><circle cx="-2.8" cy="-1" r="2.1"/><circle cx="0" cy="0" r="1.3" fill-opacity=".6"/></g><g transform="translate(13,27)" fill="currentColor"><circle cx="0" cy="-2.3" r="1.5" fill-opacity=".9"/><circle cx="2" cy="-0.7" r="1.5" fill-opacity=".9"/><circle cx="1.2" cy="1.9" r="1.5" fill-opacity=".9"/><circle cx="-1.2" cy="1.9" r="1.5" fill-opacity=".9"/><circle cx="-2" cy="-0.7" r="1.5" fill-opacity=".9"/></g></svg></span>
+        <span class="frame-corner bl" aria-hidden="true"><svg viewBox="0 0 42 42" fill="none"><path d="M2 2C12 6 16 16 13 27" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M2 2C9 9 10 18 6 25" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M2 2C16 4 24 11 26 22" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><g transform="translate(26,22)" fill="currentColor"><circle cx="0" cy="-3.2" r="2.1"/><circle cx="2.8" cy="-1" r="2.1"/><circle cx="1.7" cy="2.6" r="2.1"/><circle cx="-1.7" cy="2.6" r="2.1"/><circle cx="-2.8" cy="-1" r="2.1"/><circle cx="0" cy="0" r="1.3" fill-opacity=".6"/></g><g transform="translate(13,27)" fill="currentColor"><circle cx="0" cy="-2.3" r="1.5" fill-opacity=".9"/><circle cx="2" cy="-0.7" r="1.5" fill-opacity=".9"/><circle cx="1.2" cy="1.9" r="1.5" fill-opacity=".9"/><circle cx="-1.2" cy="1.9" r="1.5" fill-opacity=".9"/><circle cx="-2" cy="-0.7" r="1.5" fill-opacity=".9"/></g></svg></span>
+        <span class="frame-corner br" aria-hidden="true"><svg viewBox="0 0 42 42" fill="none"><path d="M2 2C12 6 16 16 13 27" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M2 2C9 9 10 18 6 25" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M2 2C16 4 24 11 26 22" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><g transform="translate(26,22)" fill="currentColor"><circle cx="0" cy="-3.2" r="2.1"/><circle cx="2.8" cy="-1" r="2.1"/><circle cx="1.7" cy="2.6" r="2.1"/><circle cx="-1.7" cy="2.6" r="2.1"/><circle cx="-2.8" cy="-1" r="2.1"/><circle cx="0" cy="0" r="1.3" fill-opacity=".6"/></g><g transform="translate(13,27)" fill="currentColor"><circle cx="0" cy="-2.3" r="1.5" fill-opacity=".9"/><circle cx="2" cy="-0.7" r="1.5" fill-opacity=".9"/><circle cx="1.2" cy="1.9" r="1.5" fill-opacity=".9"/><circle cx="-1.2" cy="1.9" r="1.5" fill-opacity=".9"/><circle cx="-2" cy="-0.7" r="1.5" fill-opacity=".9"/></g></svg></span>
+
+        <div class="menu-controls">
+          <div class="menu-tabs" role="tablist" id="menu-tabs">
+            <button class="menu-tab active" data-tab="food" role="tab" aria-selected="true" data-i18n="tab_food">Food</button>
+            <button class="menu-tab" data-tab="wine" role="tab" aria-selected="false" data-i18n="tab_wine">Wine</button>
+            <button class="menu-tab" data-tab="drinks" role="tab" aria-selected="false" data-i18n="tab_drinks">Drinks</button>
+            <button class="menu-tab" data-tab="kids" role="tab" aria-selected="false" data-i18n="tab_kids">Kids Menu</button>
+          </div>
+          <div class="menu-search">
+            <input type="search" id="menu-search" data-i18n-placeholder="search_placeholder" placeholder="Search the menu…" />
+          </div>
+        </div>
+
+        <div id="menu-panels">
+          <div class="menu-panel active" data-panel="food" id="panel-food"></div>
+          <div class="menu-panel" data-panel="wine" id="panel-wine"></div>
+          <div class="menu-panel" data-panel="drinks" id="panel-drinks"></div>
+          <div class="menu-panel" data-panel="kids" id="panel-kids"></div>
+        </div>
+        <p class="no-results" id="no-results" hidden data-i18n="no_results">No dishes match your search.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVITIES & CAMPING -->
+  <section class="section" id="activities">
+    <div class="section-inner">
+      <span class="eyebrow eyebrow-dark" data-i18n="activities_title">Activities &amp; Camping</span>
+      <div class="activities-grid" id="activities-content"></div>
+    </div>
+  </section>
+
+  <!-- RESERVATIONS -->
+  <section class="section" id="reservations">
+    <div class="section-inner reservations-wrap">
+      <span class="eyebrow eyebrow-dark" data-i18n="reserve_title">Reserve a Table</span>
+      <p class="reserve-subtitle" data-i18n="reserve_subtitle">Choose a date and time — your table is held for two hours. We'll confirm by email.</p>
+
+      <form id="reservation-form" class="reservation-form" novalidate>
+        <div class="form-row">
+          <label>
+            <span data-i18n="reserve_name">Full name</span>
+            <input type="text" name="name" required autocomplete="name" maxlength="100" />
+          </label>
+          <label>
+            <span data-i18n="reserve_guests">Guests</span>
+            <input type="number" name="guests" min="1" max="60" value="2" required inputmode="numeric" />
+          </label>
+        </div>
+        <div class="form-row">
+          <label>
+            <span data-i18n="reserve_date">Date</span>
+            <input type="date" name="date" required />
+          </label>
+          <label>
+            <span data-i18n="reserve_time">Time</span>
+            <input type="time" name="time" required />
+          </label>
+        </div>
+        <div class="form-row">
+          <label>
+            <span data-i18n="reserve_email">Email</span>
+            <input type="email" name="email" required autocomplete="email" maxlength="150" />
+          </label>
+          <label>
+            <span data-i18n="reserve_phone">Phone (optional)</span>
+            <input type="tel" name="phone" autocomplete="tel" maxlength="40" />
+          </label>
+        </div>
+        <label class="form-full">
+          <span data-i18n="reserve_notes">Notes (optional)</span>
+          <textarea name="notes" rows="2" maxlength="400"></textarea>
+        </label>
+
+        <button type="submit" class="btn btn-primary" id="reserve-submit">
+          <span data-i18n="reserve_submit">Request Table</span>
+        </button>
+        <p class="reservation-status" id="reservation-status" role="status" hidden></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="section section-alt" id="location">
+    <div class="section-inner location-grid">
+      <div class="location-copy">
+        <span class="eyebrow eyebrow-dark" data-i18n="location_title">Find Us</span>
+        <p data-i18n="location_text">On the shore of Lake Shasi, Ulcinj, Montenegro</p>
+        <a id="directions-link" href="#" target="_blank" rel="noopener" class="btn btn-outline-dark" data-i18n="directions">Get Directions</a>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          id="map-frame"
+          title="Restaurant SHASI location"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="">
+        </iframe>
+        <a class="map-fallback" id="map-fallback-link" href="#" target="_blank" rel="noopener">
+          <span data-i18n="directions">Get Directions</span> ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-inner">
+      <span class="eyebrow eyebrow-dark" data-i18n="contact_title">Contact &amp; Info</span>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3 data-i18n="phone_label">Call Us</h3>
+          <div id="phone-list" class="phone-list"></div>
+        </div>
+        <div class="contact-card">
+          <h3 data-i18n="hours_label">Opening Hours</h3>
+          <div id="hours-list" class="hours-list"></div>
+        </div>
+        <div class="contact-card">
+          <h3 data-i18n="rooms_label">Rooms &amp; Camping</h3>
+          <p data-i18n="rooms_text">4 double rooms available year-round, plus auto-camp services.</p>
+        </div>
+        <div class="contact-card">
+          <h3 data-i18n="book_label">Book Online</h3>
+          <a id="booking-link" href="#" target="_blank" rel="noopener" class="btn btn-outline-dark">Booking.com ↗</a>
+        </div>
+        <div class="contact-card">
+          <h3 data-i18n="follow_label">Follow Us</h3>
+          <div class="social-links">
+            <a id="ig-link" href="#" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.7 4.92 4.92.06 1.25.07 1.62.07 4.81s-.01 3.56-.07 4.81c-.15 3.2-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07s-3.6-.01-4.85-.07c-3.26-.15-4.77-1.72-4.92-4.92-.06-1.25-.07-1.62-.07-4.81s.02-3.56.07-4.81C2.38 3.97 3.9 2.42 7.15 2.27 8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.14 0-3.5.01-4.74.07-2.27.1-3.34 1.19-3.44 3.44C3.76 8.75 3.75 9.11 3.75 12s.01 3.25.07 4.49c.1 2.25 1.16 3.34 3.44 3.44 1.24.06 1.6.07 4.74.07s3.5-.01 4.74-.07c2.27-.1 3.34-1.18 3.44-3.44.06-1.24.07-1.6.07-4.49s-.01-3.25-.07-4.49c-.1-2.25-1.17-3.34-3.44-3.44C15.5 4.01 15.14 4 12 4zm0 3.7a4.3 4.3 0 1 1 0 8.6 4.3 4.3 0 0 1 0-8.6zm0 1.8a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm4.5-2.1a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
+              Instagram
+            </a>
+            <a id="fb-link" href="#" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook" hidden>
+              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H16.7V3.7C16.4 3.65 15.4 3.55 14.25 3.55c-2.4 0-4.05 1.47-4.05 4.15v2.25H7.5V13h2.7v8h3.3z"/></svg>
+              Facebook
+            </a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <h3 data-i18n="review_label">Leave a Review</h3>
+          <div class="social-links">
+            <a id="tripadvisor-link" href="#" target="_blank" rel="noopener" class="social-btn" aria-label="TripAdvisor">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm0 5.2a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4Z"/><path fill="currentColor" d="M24 9.3c-1-.05-1.87.2-2.5.66C19.6 8.2 16 7.2 12 7.2S4.4 8.2 2.5 9.96c-.63-.46-1.5-.7-2.5-.66l1.5 1.65A6.2 6.2 0 0 0 0 15.2a6.15 6.15 0 0 0 10.9 3.9L12 20.4l1.1-1.3a6.15 6.15 0 0 0 10.9-3.9c0-1.7-.72-3.24-1.87-4.3L24 9.3ZM5.85 19.6a4.4 4.4 0 1 1 0-8.8 4.4 4.4 0 0 1 0 8.8Zm12.3 0a4.4 4.4 0 1 1 0-8.8 4.4 4.4 0 0 1 0 8.8ZM12 8.9c1.5 0 2.94.16 4.24.46a6.14 6.14 0 0 0-4.24 2.16 6.14 6.14 0 0 0-4.24-2.16C9.06 9.06 10.5 8.9 12 8.9Z"/></svg>
+              TripAdvisor
+            </a>
+            <a id="google-review-link" href="#" target="_blank" rel="noopener" class="social-btn" aria-label="Google">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1Z"/><path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.99.66-2.25 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z"/><path fill="currentColor" d="M5.84 14.09A6.6 6.6 0 0 1 5.5 12c0-.73.12-1.43.34-2.09V7.07H2.18A11 11 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84Z"/><path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1a11 11 0 0 0-9.82 6.07l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38Z"/></svg>
+              Google
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="section-inner footer-inner">
+    <span>Restaurant SHASI — Šasko Jezero, Ulcinj</span>
+    <span id="footer-rights">All rights reserved.</span>
+  </div>
+  <div class="section-inner footer-credit">
+    Made by <a href="https://www.linkedin.com/in/adrian-m-193765139/" target="_blank" rel="noopener">Adrian Mehmeti</a>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
