@@ -346,6 +346,21 @@ button { font-family: inherit; cursor: pointer; }
 .reservations-wrap { max-width: 640px; margin: 0 auto; text-align: center; }
 .reservations-wrap .eyebrow { text-align: center; }
 .reserve-subtitle { max-width: 46ch; margin: 0 auto 40px; }
+.reservation-frame {
+  position: relative;
+  padding: 48px 50px 54px;
+  background: var(--white);
+  border: 1.5px solid var(--dusk);
+  box-shadow: 0 22px 48px rgba(14, 33, 31, 0.14);
+}
+.reservation-frame::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid var(--dusk);
+  opacity: .32;
+  pointer-events: none;
+}
 .reservation-form { text-align: left; display: flex; flex-direction: column; gap: 18px; }
 .reservation-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .reservation-form label { display: flex; flex-direction: column; gap: 8px; }
@@ -469,6 +484,7 @@ button { font-family: inherit; cursor: pointer; }
   .main-nav a::after { display: none; }
   .menu-toggle { display: flex; }
   .menu-frame { padding: 34px 22px 46px; }
+  .reservation-frame { padding: 30px 22px 34px; }
   .frame-corner { width: 30px; height: 30px; }
   .menu-controls { flex-direction: column; align-items: stretch; }
   .menu-tabs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
