@@ -372,7 +372,12 @@ button { font-family: inherit; cursor: pointer; }
 .reservation-form textarea {
   font-family: var(--font-body); font-size: .96rem; color: var(--ink);
   background: var(--white); border: var(--hairline); border-radius: var(--radius);
-  padding: 12px 14px; width: 100%;
+  padding: 12px 14px; width: 100%; min-width: 0;
+}
+.reservation-form input[type="date"],
+.reservation-form input[type="time"] {
+  -webkit-appearance: none;
+  appearance: none;
 }
 .reservation-form textarea { resize: vertical; min-height: 60px; }
 .reservation-form input:focus, .reservation-form textarea:focus { outline: none; border-color: var(--rust); }
@@ -495,4 +500,5 @@ button { font-family: inherit; cursor: pointer; }
 
 @media (max-width: 480px) {
   .contact-grid { grid-template-columns: 1fr; }
+  .hero-copy p { font-size: 1rem; max-width: 34ch; }
 }
