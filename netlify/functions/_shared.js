@@ -43,13 +43,28 @@ async function sendEmail({ to, subject, html }) {
       Authorization: `Bearer ${RESEND_API_KEY}`,
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ from: FROM_EMAIL, to, subject, html })
+    body: JSON.stringify({ from: FROM_EMAIL, to, subject, html, text: htmlToText(html) })
   });
   if (!res.ok) {
     const errText = await res.text();
     throw new Error(`Resend error ${res.status}: ${errText}`);
   }
   return res.json();
+}
+
+/* plain-text fallback derived from the HTML body — improves spam-filter trust
+   for multipart emails and gives clients without HTML rendering something readable */
+function htmlToText(html) {
+  return html
+    .replace(/<style[\s\S]*?<\/style>/gi, "")
+    .replace(/<\/(p|div|tr|h1|h2|h3)>/gi, "\n")
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, " ")
+    .replace(/[ \t]+\n/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
 }
 
 /* very small, safe HTML escaping for values interpolated into email markup */
