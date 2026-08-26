@@ -218,6 +218,8 @@ button { font-family: inherit; cursor: pointer; }
 .btn-ghost:hover { background: var(--sage-deep); border-color: var(--sage-deep); }
 .btn-outline-dark { border-color: var(--ink); color: var(--ink); }
 .btn-outline-dark:hover { background: var(--ink); color: var(--linen); }
+.btn-outline-light { border-color: rgba(255,253,248,0.55); color: var(--white); }
+.btn-outline-light:hover { background: var(--white); color: var(--ink); border-color: var(--white); }
 
 /* ===== SECTIONS ===== */
 .section { padding: 108px 0; }

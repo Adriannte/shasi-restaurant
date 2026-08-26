@@ -93,6 +93,7 @@ const UI = {
       "Fresh fish, lakeside serenity, and family hospitality on Lake Shasi",
     cta_menu: "View Menu",
     cta_book: "Book a Room",
+    cta_reserve: "Reserve a Table",
     about_title: "About Us",
     moments_title: "From the Lake",
     moments_subtitle:
@@ -150,6 +151,7 @@ const UI = {
       "Svježa riba, mir jezera i porodično gostoprimstvo na Šaskom jezeru",
     cta_menu: "Pogledaj meni",
     cta_book: "Rezerviši sobu",
+    cta_reserve: "Rezerviši sto",
     about_title: "O nama",
     moments_title: "Sa jezera",
     moments_subtitle:
@@ -207,6 +209,7 @@ const UI = {
       "Peshk i freskët, qetësia e liqenit dhe mikpritje familjare në Liqenin e Shasit",
     cta_menu: "Shiko Menunë",
     cta_book: "Rezervo Dhomë",
+    cta_reserve: "Rezervo Tavolinë",
     about_title: "Rreth nesh",
     moments_title: "Nga Liqeni",
     moments_subtitle:
@@ -264,6 +267,7 @@ const UI = {
       "Frischer Fisch, Ruhe am See und familiäre Gastfreundschaft am Shasi-See",
     cta_menu: "Speisekarte ansehen",
     cta_book: "Zimmer buchen",
+    cta_reserve: "Tisch reservieren",
     about_title: "Über uns",
     moments_title: "Vom See",
     moments_subtitle:
@@ -321,6 +325,7 @@ const UI = {
       "Свежая рыба, спокойствие озера и семейное гостеприимство на Шасском озере",
     cta_menu: "Смотреть меню",
     cta_book: "Забронировать номер",
+    cta_reserve: "Забронировать столик",
     about_title: "О нас",
     moments_title: "С озера",
     moments_subtitle:
