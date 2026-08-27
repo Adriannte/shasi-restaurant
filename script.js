@@ -399,10 +399,18 @@
     source.type = "video/mp4";
     video.appendChild(source);
 
-    video.addEventListener("loadeddata", () => video.classList.add("ready"));
+    const tryPlay = () => video.play().catch(() => {});
+    video.addEventListener("loadeddata", () => {
+      video.classList.add("ready");
+      tryPlay();
+    });
+    // mobile networks often haven't buffered enough right after load() —
+    // keep retrying as more data arrives instead of giving up after one try
+    video.addEventListener("canplay", tryPlay);
+    video.addEventListener("canplaythrough", tryPlay);
     video.addEventListener("error", () => video.remove());
     video.load();
-    video.play().catch(() => {});
+    tryPlay();
   }
 
   function initHeroCanvas() {
