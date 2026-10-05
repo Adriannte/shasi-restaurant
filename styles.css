@@ -527,3 +527,8 @@ button { font-family: inherit; cursor: pointer; }
 
 /* honeypot: invisible to people, tempting to bots */
 .hp-field { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+/* ===== BRAND LOGO ===== */
+.brand-logo { height: 58px; width: auto; display: block; filter: invert(1); transition: filter .35s var(--ease); }
+.site-header.scrolled .brand-logo { filter: none; }
+@media (max-width: 760px) { .brand-logo { height: 50px; } }
