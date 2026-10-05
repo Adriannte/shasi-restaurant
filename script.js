@@ -292,8 +292,46 @@
     const submitBtn = document.getElementById("reserve-submit");
     const dateInput = form.querySelector('input[name="date"]');
 
+    const timeSelect = form.querySelector('select[name="time"]');
     const today = new Date();
     dateInput.min = today.toISOString().slice(0, 10);
+
+    const toMin = (hhmm) => parseInt(hhmm.slice(0, 2), 10) * 60 + parseInt(hhmm.slice(3, 5), 10);
+    const toHHMM = (m) =>
+      String(Math.floor(m / 60)).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0");
+
+    // 30-minute slots for the opening hours of the chosen date's season;
+    // today's already-passed slots are left out
+    function buildTimeSlots() {
+      const previous = timeSelect.value;
+      const chosen = dateInput.value ? new Date(dateInput.value + "T00:00:00") : new Date();
+      const season = HOURS.find((h) => h.months.includes(chosen.getMonth() + 1));
+      const isToday = chosen.toDateString() === new Date().toDateString();
+      const nowMin = new Date().getHours() * 60 + new Date().getMinutes();
+
+      timeSelect.innerHTML = "";
+      const first = document.createElement("option");
+      first.value = "";
+      first.textContent = "--:--";
+      first.disabled = true;
+      first.selected = true;
+      timeSelect.appendChild(first);
+
+      const last = toMin(season.close) - LAST_SEATING_BEFORE_CLOSE_MIN;
+      for (let m = toMin(season.open); m <= last; m += SLOT_STEP_MIN) {
+        if (isToday && m <= nowMin) continue;
+        const opt = document.createElement("option");
+        opt.value = opt.textContent = toHHMM(m);
+        timeSelect.appendChild(opt);
+      }
+      if (previous && [...timeSelect.options].some((o) => o.value === previous)) {
+        timeSelect.value = previous;
+      }
+      if (timeSelect.options.length === 1) first.textContent = UI[currentLang].reserve_time_none;
+    }
+    dateInput.addEventListener("change", buildTimeSlots);
+    dateInput.addEventListener("input", buildTimeSlots);
+    buildTimeSlots();
 
     function showStatus(key, kind) {
       status.textContent = UI[currentLang][key];
@@ -325,6 +363,7 @@
         showStatus("reserve_success", "success");
         form.reset();
         dateInput.min = today.toISOString().slice(0, 10);
+        buildTimeSlots();
       } catch (err) {
         showStatus("reserve_error", "error");
       } finally {

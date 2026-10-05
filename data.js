@@ -37,6 +37,10 @@ const SITE = {
 };
 
 /* Seasonal opening hours */
+/* months/open/close drive the 30-minute reservation slots; the last slot
+   is LAST_SEATING_BEFORE_CLOSE_MIN minutes before closing */
+const SLOT_STEP_MIN = 30;
+const LAST_SEATING_BEFORE_CLOSE_MIN = 60;
 const HOURS = [
   {
     period: {
@@ -46,7 +50,8 @@ const HOURS = [
       de: "Januar – April",
       ru: "Январь – Апрель"
     },
-    time: "12:00 – 21:00"
+    time: "12:00 – 21:00",
+    months: [1, 2, 3, 4], open: "12:00", close: "21:00"
   },
   {
     period: {
@@ -56,7 +61,8 @@ const HOURS = [
       de: "Mai – September",
       ru: "Май – Сентябрь"
     },
-    time: "10:00 – 23:00"
+    time: "10:00 – 23:00",
+    months: [5, 6, 7, 8, 9], open: "10:00", close: "23:00"
   },
   {
     period: {
@@ -66,7 +72,8 @@ const HOURS = [
       de: "Oktober – Dezember",
       ru: "Октябрь – Декабрь"
     },
-    time: "12:00 – 21:00"
+    time: "12:00 – 21:00",
+    months: [10, 11, 12], open: "12:00", close: "21:00"
   }
 ];
 
@@ -122,6 +129,7 @@ const UI = {
     reserve_guests: "Guests",
     reserve_date: "Date",
     reserve_time: "Time",
+    reserve_time_none: "No times left today — please pick another date.",
     reserve_email: "Email",
     reserve_phone: "Phone (optional)",
     reserve_notes: "Notes (optional)",
@@ -180,6 +188,7 @@ const UI = {
     reserve_guests: "Broj gostiju",
     reserve_date: "Datum",
     reserve_time: "Vrijeme",
+    reserve_time_none: "Danas nema slobodnih termina — izaberite drugi datum.",
     reserve_email: "Email",
     reserve_phone: "Telefon (opciono)",
     reserve_notes: "Napomena (opciono)",
@@ -238,6 +247,7 @@ const UI = {
     reserve_guests: "Numri i mysafirëve",
     reserve_date: "Data",
     reserve_time: "Ora",
+    reserve_time_none: "Nuk ka orë të lira sot — zgjidhni një datë tjetër.",
     reserve_email: "Email",
     reserve_phone: "Telefon (opsionale)",
     reserve_notes: "Shënim (opsionale)",
@@ -296,6 +306,7 @@ const UI = {
     reserve_guests: "Anzahl der Gäste",
     reserve_date: "Datum",
     reserve_time: "Uhrzeit",
+    reserve_time_none: "Heute keine Zeiten mehr frei — bitte wählen Sie ein anderes Datum.",
     reserve_email: "E-Mail",
     reserve_phone: "Telefon (optional)",
     reserve_notes: "Anmerkungen (optional)",
@@ -354,6 +365,7 @@ const UI = {
     reserve_guests: "Количество гостей",
     reserve_date: "Дата",
     reserve_time: "Время",
+    reserve_time_none: "На сегодня времени не осталось — выберите другую дату.",
     reserve_email: "Email",
     reserve_phone: "Телефон (необязательно)",
     reserve_notes: "Примечание (необязательно)",

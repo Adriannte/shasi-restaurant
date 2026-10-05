@@ -55,6 +55,10 @@ exports.handler = async (event) => {
     return json(400, { ok: false, error: "Please check the form — some details look invalid." });
   }
 
+  if (!["00", "30"].includes(time.slice(3))) {
+    return json(400, { ok: false, error: "Please choose a time on the hour or half hour." });
+  }
+
   const requestedAt = new Date(`${date}T${time}:00`);
   if (Number.isNaN(requestedAt.getTime()) || requestedAt.getTime() < Date.now() - 60 * 60 * 1000) {
     return json(400, { ok: false, error: "Please choose a date and time in the future." });
