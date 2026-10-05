@@ -20,7 +20,7 @@ const SITE = {
   email: "restorantshasi@gmail.com",
   instagram: "https://www.instagram.com/restaurantshasii/",
   facebook: "https://www.facebook.com/restaurantshaii/",
-  booking: "https://www.booking.com/Share-xgmSoY",
+  booking: "https://www.booking.com/hotel/me/shasi-eco-lodge.html",
   // Direct "write a review" links (not just the listing page)
   tripadvisor:
     "https://www.tripadvisor.com/UserReviewEdit-g4559581-d19940670-Restaurant_Shasi-Vladimir_Ulcinj_Municipality.html",
