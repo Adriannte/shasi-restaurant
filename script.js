@@ -293,6 +293,20 @@
     const dateInput = form.querySelector('input[name="date"]');
 
     const timeSelect = form.querySelector('select[name="time"]');
+    const formReadyAt = Date.now();
+
+    // optional bot check: only active when SITE.turnstileSiteKey is set
+    if (SITE.turnstileSiteKey) {
+      const widget = document.createElement("div");
+      widget.className = "cf-turnstile";
+      widget.dataset.sitekey = SITE.turnstileSiteKey;
+      form.insertBefore(widget, submitBtn);
+      const ts = document.createElement("script");
+      ts.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+      ts.async = true;
+      ts.defer = true;
+      document.head.appendChild(ts);
+    }
     const today = new Date();
     dateInput.min = today.toISOString().slice(0, 10);
 
@@ -349,6 +363,7 @@
       const data = Object.fromEntries(new FormData(form).entries());
       data.guests = parseInt(data.guests, 10);
       data.lang = currentLang;
+      data.elapsed = Date.now() - formReadyAt;
 
       submitBtn.disabled = true;
       showStatus("reserve_sending", "pending");
@@ -359,6 +374,10 @@
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data)
         });
+        if (res.status === 429) {
+          showStatus("reserve_error_busy", "error");
+          return;
+        }
         if (!res.ok) throw new Error("request failed");
         showStatus("reserve_success", "success");
         form.reset();
@@ -367,6 +386,7 @@
       } catch (err) {
         showStatus("reserve_error", "error");
       } finally {
+        if (window.turnstile) window.turnstile.reset();
         submitBtn.disabled = false;
       }
     });

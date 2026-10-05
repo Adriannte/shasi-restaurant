@@ -215,16 +215,53 @@ function ownerEmailHtml(r, confirmUrl, declineUrl) {
   `);
 }
 
-function resultPageHtml({ title, message }) {
+/* headers for every response the functions return */
+const SECURE_HEADERS = {
+  "Cache-Control": "no-store",
+  "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "DENY",
+  "Referrer-Policy": "no-referrer",
+  "Content-Security-Policy":
+    "default-src 'none'; style-src 'unsafe-inline'; form-action 'self'; frame-ancestors 'none'; base-uri 'none'"
+};
+
+function htmlResponse(statusCode, body) {
+  return {
+    statusCode,
+    headers: { ...SECURE_HEADERS, "Content-Type": "text/html; charset=utf-8", "X-Robots-Tag": "noindex" },
+    body
+  };
+}
+
+function jsonResponse(statusCode, payload) {
+  return {
+    statusCode,
+    headers: { ...SECURE_HEADERS, "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  };
+}
+
+/* shared shell for the owner-facing pages; innerHtml must already be escaped */
+function pageHtml(title, innerHtml) {
   return `<!doctype html><html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="robots" content="noindex"/>
   <title>${esc(title)}</title>
   <style>
     body{font-family:Georgia,'Times New Roman',serif;background:#f4f1ea;color:#2c2c26;display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0;padding:24px;}
-    .card{max-width:420px;background:#fff;border:1px solid #d8d3c4;border-radius:6px;padding:36px;text-align:center;}
+    .card{max-width:440px;width:100%;background:#fff;border:1px solid #d8d3c4;border-radius:6px;padding:36px;text-align:center;}
     h1{font-size:20px;margin:0 0 12px;}
     p{font-size:15px;line-height:1.6;color:#4a4a3f;}
+    table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px;text-align:left;}
+    td{padding:6px 0;vertical-align:top;} td:first-child{color:#7c8a68;width:34%;}
+    form{display:inline-block;margin:6px;}
+    button{border:0;border-radius:4px;color:#fff;font:14px Georgia,serif;padding:12px 22px;cursor:pointer;}
+    .ok{background:#5c7a5f;} .no{background:#b5533d;}
   </style></head>
-  <body><div class="card"><h1>${esc(title)}</h1><p>${esc(message)}</p></div></body></html>`;
+  <body><div class="card">${innerHtml}</div></body></html>`;
+}
+
+function resultPageHtml({ title, message }) {
+  return pageHtml(title, `<h1>${esc(title)}</h1><p>${esc(message)}</p>`);
 }
 
 module.exports = {
@@ -241,5 +278,8 @@ module.exports = {
   declinedEmailHtml,
   ownerEmailHtml,
   resultPageHtml,
+  pageHtml,
+  htmlResponse,
+  jsonResponse,
   textFor
 };

@@ -524,3 +524,6 @@ button { font-family: inherit; cursor: pointer; }
 .privacy-updated { font-size: .82rem; margin: 0 0 36px; }
 .privacy-page h2 { font-size: 1.25rem; font-style: italic; color: var(--rust); margin: 34px 0 6px; }
 .privacy-page p { max-width: none; }
+
+/* honeypot: invisible to people, tempting to bots */
+.hp-field { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }

@@ -27,6 +27,8 @@ const SITE = {
   // Opens straight to the Reviews tab with "Write a review" one click away
   googleReview:
     "https://www.google.com/maps/place/Restaurant+Shasi/@41.9799378,19.3375589,17z/data=!4m8!3m7!1s0x134e0fd613ce7cd3:0xddb79295aefe1157!8m2!3d41.9799378!4d19.3375589!9m1!1b1!16s%2Fg%2F1tdv2vvy",
+  // Cloudflare Turnstile site key (public). Leave empty to disable the check.
+  turnstileSiteKey: "",
   mapQuery: "Restaurant SHASI, Šasko jezero, Ulcinj, Montenegro",
   mapEmbedSrc:
     "https://www.google.com/maps?q=Restaurant+SHASI+%C5%A0asko+jezero+Ulcinj&output=embed",
@@ -140,6 +142,7 @@ const UI = {
     reserve_sending: "Sending your request…",
     reserve_success: "Thank you! Your request has been sent — check your email, your table is waiting to be confirmed by the owner.",
     reserve_error: "Something went wrong sending your request. Please try again, or call us directly.",
+    reserve_error_busy: "Too many requests right now. Please try again later or call us.",
     reserve_error_fields: "Please check the highlighted fields and try again.",
     footer_rights: "All rights reserved.",
     search_placeholder: "Search the menu…",
@@ -202,6 +205,7 @@ const UI = {
     reserve_sending: "Slanje zahtjeva…",
     reserve_success: "Hvala! Vaš zahtjev je poslat — provjerite email, vaš sto čeka na potvrdu vlasnika.",
     reserve_error: "Došlo je do greške pri slanju zahtjeva. Pokušajte ponovo ili nas pozovite direktno.",
+    reserve_error_busy: "Previše zahtjeva u ovom trenutku. Pokušajte kasnije ili nas pozovite.",
     reserve_error_fields: "Provjerite označena polja i pokušajte ponovo.",
     footer_rights: "Sva prava zadržana.",
     search_placeholder: "Pretraži meni…",
@@ -264,6 +268,7 @@ const UI = {
     reserve_sending: "Duke dërguar kërkesën…",
     reserve_success: "Faleminderit! Kërkesa juaj u dërgua — kontrolloni email-in, tavolina juaj është duke pritur konfirmimin e pronarit.",
     reserve_error: "Diçka shkoi keq gjatë dërgimit të kërkesës. Provoni përsëri ose na telefononi direkt.",
+    reserve_error_busy: "Shumë kërkesa për momentin. Provoni më vonë ose na telefononi.",
     reserve_error_fields: "Kontrolloni fushat e theksuara dhe provoni përsëri.",
     footer_rights: "Të gjitha të drejtat e rezervuara.",
     search_placeholder: "Kërko në menu…",
@@ -326,6 +331,7 @@ const UI = {
     reserve_sending: "Ihre Anfrage wird gesendet…",
     reserve_success: "Vielen Dank! Ihre Anfrage wurde gesendet — prüfen Sie Ihre E-Mails, Ihr Tisch wartet auf die Bestätigung des Inhabers.",
     reserve_error: "Beim Senden Ihrer Anfrage ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie uns direkt an.",
+    reserve_error_busy: "Zu viele Anfragen im Moment. Bitte versuchen Sie es später erneut oder rufen Sie uns an.",
     reserve_error_fields: "Bitte überprüfen Sie die markierten Felder und versuchen Sie es erneut.",
     footer_rights: "Alle Rechte vorbehalten.",
     search_placeholder: "Speisekarte durchsuchen…",
@@ -388,6 +394,7 @@ const UI = {
     reserve_sending: "Отправка запроса…",
     reserve_success: "Спасибо! Ваш запрос отправлен — проверьте почту, столик ожидает подтверждения владельца.",
     reserve_error: "Не удалось отправить запрос. Попробуйте ещё раз или позвоните нам напрямую.",
+    reserve_error_busy: "Слишком много запросов. Попробуйте позже или позвоните нам.",
     reserve_error_fields: "Проверьте отмеченные поля и попробуйте снова.",
     footer_rights: "Все права защищены.",
     search_placeholder: "Поиск по меню…",
