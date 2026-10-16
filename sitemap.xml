@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.restaurantshasi.me/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://www.restaurantshasi.me/privacy</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.1</priority>
-  </url>
+  <url><loc>https://www.restaurantshasi.me/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.restaurantshasi.me/privacy/</loc><changefreq>monthly</changefreq><priority>0.1</priority></url>
+  <url><loc>https://www.restaurantshasi.me/mne/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.restaurantshasi.me/mne/privacy/</loc><changefreq>monthly</changefreq><priority>0.1</priority></url>
+  <url><loc>https://www.restaurantshasi.me/sq/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.restaurantshasi.me/sq/privacy/</loc><changefreq>monthly</changefreq><priority>0.1</priority></url>
+  <url><loc>https://www.restaurantshasi.me/de/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.restaurantshasi.me/de/privacy/</loc><changefreq>monthly</changefreq><priority>0.1</priority></url>
+  <url><loc>https://www.restaurantshasi.me/ru/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.restaurantshasi.me/ru/privacy/</loc><changefreq>monthly</changefreq><priority>0.1</priority></url>
 </urlset>

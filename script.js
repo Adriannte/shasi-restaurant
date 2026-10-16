@@ -1,262 +1,63 @@
 (function () {
   "use strict";
 
-  let currentLang = localStorage.getItem("shasi_lang") || "en";
-  if (!LANGS.includes(currentLang)) currentLang = "en";
   let currentTab = "food";
   let searchTerm = "";
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const PHONE_ICON =
-    '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
-  const MAIL_ICON =
-    '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>';
-
-  /* ---------- static links ---------- */
-  function initStaticLinks() {
-    document.getElementById("booking-link").href = SITE.booking;
-    document.getElementById("hero-book").href = SITE.booking;
-    document.getElementById("ig-link").href = SITE.instagram;
-    document.getElementById("tripadvisor-link").href = SITE.tripadvisor;
-    document.getElementById("google-review-link").href = SITE.googleReview;
-
-    const fbLink = document.getElementById("fb-link");
-    if (SITE.facebook) {
-      fbLink.href = SITE.facebook;
-      fbLink.hidden = false;
-    }
-
-    document.getElementById("map-frame").src = SITE.mapEmbedSrc;
-    const directionsUrl =
-      "https://www.google.com/maps/dir/?api=1&destination=" +
-      encodeURIComponent(SITE.mapQuery);
-    document.getElementById("directions-link").href = directionsUrl;
-    document.getElementById("map-fallback-link").href = directionsUrl;
-
-    const phoneList = document.getElementById("phone-list");
-    phoneList.innerHTML = "";
-    SITE.phones.forEach((p) => {
-      const a = document.createElement("a");
-      a.href = "tel:" + p.replace(/\s+/g, "");
-      a.innerHTML = PHONE_ICON + "<span>" + p + "</span>";
-      phoneList.appendChild(a);
-    });
-    if (SITE.email) {
-      const a = document.createElement("a");
-      a.href = "mailto:" + SITE.email;
-      a.innerHTML = MAIL_ICON + "<span>" + SITE.email + "</span>";
-      phoneList.appendChild(a);
-    }
-  }
-
-  function renderHours() {
-    const list = document.getElementById("hours-list");
-    list.innerHTML = "";
-    HOURS.forEach((row) => {
-      const line = document.createElement("div");
-      line.className = "hours-row";
-      line.innerHTML =
-        '<span class="hours-period">' + row.period[currentLang] + "</span>" +
-        '<span class="hours-time">' + row.time + "</span>";
-      list.appendChild(line);
-    });
-  }
-
-  function renderActivities() {
-    const container = document.getElementById("activities-content");
-    container.innerHTML = "";
-    ACTIVITIES_MENU.forEach((cat) => {
-      const block = document.createElement("div");
-      block.className = "menu-category";
-      const h3 = document.createElement("h3");
-      h3.textContent = cat.name[currentLang];
-      block.appendChild(h3);
-      cat.items.forEach((item) => {
-        const row = document.createElement("div");
-        row.className = "menu-item";
-        row.innerHTML = itemRowHtml(item.name[currentLang], item.unit[currentLang], item.price);
-        block.appendChild(row);
-      });
-      if (cat.note) {
-        const note = document.createElement("p");
-        note.className = "menu-note";
-        note.textContent = cat.note[currentLang];
-        note.style.marginTop = "10px";
-        block.appendChild(note);
-      }
-      container.appendChild(block);
-    });
-  }
-
-  /* ---------- language ---------- */
-  function buildLangMenu() {
-    const list = document.getElementById("lang-list");
-    list.innerHTML = "";
-    LANGS.forEach((code) => {
-      const li = document.createElement("li");
-      const btn = document.createElement("button");
-      btn.textContent = LANG_LABELS[code];
-      btn.dataset.lang = code;
-      if (code === currentLang) btn.classList.add("active");
-      btn.addEventListener("click", () => {
-        setLang(code);
-        document.getElementById("lang-list").classList.remove("open");
-        document.getElementById("lang-btn").setAttribute("aria-expanded", "false");
-      });
-      li.appendChild(btn);
-      list.appendChild(li);
-    });
-  }
-
-  function setLang(code) {
-    currentLang = code;
-    localStorage.setItem("shasi_lang", code);
-    document.documentElement.lang = code === "mne" ? "sr" : code;
-    document.getElementById("lang-current").textContent = code.toUpperCase();
-    document.querySelectorAll("#lang-list button").forEach((b) => {
-      b.classList.toggle("active", b.dataset.lang === code);
-    });
-    applyTranslations();
-    renderMenu();
-  }
-
-  function applyTranslations() {
-    const dict = UI[currentLang];
-    document.querySelectorAll("[data-i18n]").forEach((el) => {
-      const key = el.getAttribute("data-i18n");
-      if (dict[key]) el.textContent = dict[key];
-    });
-    document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
-      const key = el.getAttribute("data-i18n-placeholder");
-      if (dict[key]) el.placeholder = dict[key];
-    });
-    document.getElementById("about-text").textContent = ABOUT[currentLang];
-    document.getElementById("footer-rights").textContent = dict.footer_rights;
-    document.getElementById("no-results").textContent = dict.no_results;
-    renderHours();
-    renderActivities();
-  }
-
-  /* ---------- menu rendering ---------- */
-  function priceStr(v) {
-    return v.toFixed(2) + " €";
-  }
-
+  /* ---------- menu search: filters the already-rendered static markup
+     (the menu/wine/activities HTML is baked in at build time — see
+     scripts/build.js — so there's no client-side data to re-render) ---------- */
   function matchesSearch(text) {
-    if (!searchTerm) return true;
-    return text.toLowerCase().includes(searchTerm);
+    return !searchTerm || text.toLowerCase().includes(searchTerm);
   }
 
-  function escapeHtml(str) {
-    return String(str).replace(/[&<>"']/g, (c) => ({
-      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-    }[c]));
-  }
+  function applySearchFilter() {
+    document.querySelectorAll(".menu-panel").forEach((panel) => {
+      let panelVisible = false;
+      panel.querySelectorAll(".menu-category").forEach((cat) => {
+        const catName = cat.dataset.catName || "";
+        let catVisible = false;
 
-  function itemRowHtml(name, weight, price) {
-    return (
-      '<div><div class="menu-item-name">' + escapeHtml(name) + "</div>" +
-      (weight ? '<span class="menu-item-weight">' + escapeHtml(weight) + "</span>" : "") +
-      "</div>" +
-      '<div class="menu-item-leader"></div>' +
-      '<div class="menu-item-price">' + priceStr(price) + "</div>"
-    );
-  }
-
-  function renderFoodLike(containerId, categories) {
-    const el = document.getElementById(containerId);
-    el.innerHTML = "";
-    let anyVisible = false;
-
-    categories.forEach((cat) => {
-      const visibleItems = cat.items.filter((item) => {
-        const name = typeof item.name === "string" ? item.name : item.name[currentLang];
-        return matchesSearch(name) || matchesSearch(cat.name[currentLang]);
-      });
-      if (!visibleItems.length) return;
-      anyVisible = true;
-
-      const block = document.createElement("div");
-      block.className = "menu-category";
-
-      const h3 = document.createElement("h3");
-      h3.textContent = cat.name[currentLang];
-      block.appendChild(h3);
-
-      if (cat.note) {
-        const note = document.createElement("p");
-        note.className = "menu-note";
-        note.textContent = cat.note[currentLang];
-        block.appendChild(note);
-      }
-
-      visibleItems.forEach((item) => {
-        const name = typeof item.name === "string" ? item.name : item.name[currentLang];
-        const row = document.createElement("div");
-        row.className = "menu-item";
-        row.innerHTML = itemRowHtml(name, item.weight, item.price);
-        block.appendChild(row);
-      });
-
-      el.appendChild(block);
-    });
-
-    return anyVisible;
-  }
-
-  function renderWine(containerId) {
-    const el = document.getElementById(containerId);
-    el.innerHTML = "";
-    let anyVisible = false;
-
-    WINE_MENU.forEach((cat) => {
-      const groupsWithItems = cat.groups
-        .map((g) => ({
-          country: g.country,
-          items: g.items.filter((it) => matchesSearch(it.name) || matchesSearch(cat.name[currentLang]))
-        }))
-        .filter((g) => g.items.length);
-
-      if (!groupsWithItems.length) return;
-      anyVisible = true;
-
-      const block = document.createElement("div");
-      block.className = "menu-category";
-      const h3 = document.createElement("h3");
-      h3.textContent = cat.name[currentLang];
-      block.appendChild(h3);
-
-      groupsWithItems.forEach((g) => {
-        const wrap = document.createElement("div");
-        wrap.className = "wine-group";
-        if (g.country) {
-          const h4 = document.createElement("h4");
-          h4.textContent = g.country[currentLang];
-          wrap.appendChild(h4);
-        }
-        g.items.forEach((item) => {
-          const row = document.createElement("div");
-          row.className = "menu-item";
-          row.innerHTML = itemRowHtml(item.name, item.vol, item.price);
-          wrap.appendChild(row);
+        cat.querySelectorAll(".wine-group").forEach((group) => {
+          let groupVisible = false;
+          group.querySelectorAll(".menu-item").forEach((item) => {
+            const match = matchesSearch(catName) || matchesSearch(item.textContent);
+            item.hidden = !match;
+            if (match) groupVisible = true;
+          });
+          group.hidden = !groupVisible;
+          if (groupVisible) catVisible = true;
         });
-        block.appendChild(wrap);
+
+        // categories with plain items (no wine-group wrapper)
+        if (!cat.querySelector(".wine-group")) {
+          cat.querySelectorAll(".menu-item").forEach((item) => {
+            const match = matchesSearch(catName) || matchesSearch(item.textContent);
+            item.hidden = !match;
+            if (match) catVisible = true;
+          });
+        }
+
+        cat.hidden = !catVisible;
+        if (catVisible) panelVisible = true;
       });
-
-      el.appendChild(block);
+      panel.dataset.anyVisible = panelVisible ? "1" : "0";
     });
-
-    return anyVisible;
+    updateNoResults();
   }
 
-  function renderMenu() {
-    const visibility = {
-      food: renderFoodLike("panel-food", FOOD_MENU),
-      wine: renderWine("panel-wine"),
-      drinks: renderFoodLike("panel-drinks", DRINKS_MENU),
-      kids: renderFoodLike("panel-kids", KIDS_MENU)
-    };
-    document.getElementById("no-results").hidden = visibility[currentTab];
+  function updateNoResults() {
+    const active = document.querySelector(".menu-panel.active");
+    document.getElementById("no-results").hidden = !active || active.dataset.anyVisible !== "0";
+  }
+
+  function initSearch() {
+    const input = document.getElementById("menu-search");
+    input.addEventListener("input", () => {
+      searchTerm = input.value.trim().toLowerCase();
+      applySearchFilter();
+    });
   }
 
   /* ---------- tabs ---------- */
@@ -271,17 +72,8 @@
         document.querySelectorAll(".menu-panel").forEach((p) => {
           p.classList.toggle("active", p.dataset.panel === currentTab);
         });
-        renderMenu();
+        updateNoResults();
       });
-    });
-  }
-
-  /* ---------- search ---------- */
-  function initSearch() {
-    const input = document.getElementById("menu-search");
-    input.addEventListener("input", () => {
-      searchTerm = input.value.trim().toLowerCase();
-      renderMenu();
     });
   }
 
@@ -291,7 +83,6 @@
     const status = document.getElementById("reservation-status");
     const submitBtn = document.getElementById("reserve-submit");
     const dateInput = form.querySelector('input[name="date"]');
-
     const timeSelect = form.querySelector('select[name="time"]');
     const formReadyAt = Date.now();
 
@@ -341,14 +132,14 @@
       if (previous && [...timeSelect.options].some((o) => o.value === previous)) {
         timeSelect.value = previous;
       }
-      if (timeSelect.options.length === 1) first.textContent = UI[currentLang].reserve_time_none;
+      if (timeSelect.options.length === 1) first.textContent = RESERVE_UI.reserve_time_none;
     }
     dateInput.addEventListener("change", buildTimeSlots);
     dateInput.addEventListener("input", buildTimeSlots);
     buildTimeSlots();
 
     function showStatus(key, kind) {
-      status.textContent = UI[currentLang][key];
+      status.textContent = RESERVE_UI[key];
       status.hidden = false;
       status.className = "reservation-status " + kind;
     }
@@ -362,7 +153,7 @@
 
       const data = Object.fromEntries(new FormData(form).entries());
       data.guests = parseInt(data.guests, 10);
-      data.lang = currentLang;
+      data.lang = PAGE_LANG;
       data.elapsed = Date.now() - formReadyAt;
 
       submitBtn.disabled = true;
@@ -398,7 +189,6 @@
     const fallback = document.getElementById("moments-fallback");
 
     if (!MOMENTS || !MOMENTS.length) {
-      fallback.href = SITE.instagram;
       fallback.hidden = false;
       return;
     }
@@ -590,6 +380,8 @@
       })
     );
 
+    // language links now navigate to the sibling URL (/mne/, /de/, …)
+    // instead of swapping text in place — only the open/close state is JS
     const langBtn = document.getElementById("lang-btn");
     const langList = document.getElementById("lang-list");
     langBtn.addEventListener("click", () => {
@@ -606,8 +398,6 @@
 
   /* ---------- init ---------- */
   function init() {
-    initStaticLinks();
-    buildLangMenu();
     initHeaderInteractions();
     initHeaderScroll();
     initTabs();
@@ -616,7 +406,6 @@
     initMoments();
     initHeroCanvas();
     initHeroVideo();
-    setLang(currentLang);
     initReveal();
   }
 

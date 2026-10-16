@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /.netlify/
-Disallow: /privacy
 
 Sitemap: https://www.restaurantshasi.me/sitemap.xml

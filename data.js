@@ -881,3 +881,13 @@ const ACTIVITIES_MENU = [
     )
   }
 ];
+
+/* usable from Node (the page generator) without affecting the browser,
+   where `module` doesn't exist */
+if (typeof module !== "undefined") {
+  module.exports = {
+    LANGS, LANG_LABELS, SITE, SLOT_STEP_MIN, LAST_SEATING_BEFORE_CLOSE_MIN,
+    HOURS, MOMENTS, UI, ABOUT, T, FOOD_MENU, KIDS_MENU, DRINKS_MENU,
+    COUNTRY, WINE_MENU, ACTIVITIES_MENU
+  };
+}

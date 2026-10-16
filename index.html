@@ -3,16 +3,26 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<link rel="icon" type="image/png" sizes="64x64" href="./media/favicon-64.png" />
+<link rel="apple-touch-icon" href="./media/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./styles.css" />
 <title>Restaurant SHASI — Lake Shasi, Ulcinj</title>
-<meta name="description" content="Restaurant SHASI on Lake Shasi, Ulcinj, Montenegro — fresh fish specialities, rooms and auto-camp, since 2002." />
+<meta name="description" content="Fresh fish, lakeside serenity, and family hospitality on Lake Shasi. On the shore of Lake Shasi, Ulcinj, Montenegro." />
 <link rel="canonical" href="https://www.restaurantshasi.me/" />
-<link rel="icon" type="image/png" sizes="64x64" href="media/favicon-64.png" />
-<link rel="apple-touch-icon" href="media/apple-touch-icon.png" />
+<link rel="alternate" hreflang="en" href="https://www.restaurantshasi.me/" />
+<link rel="alternate" hreflang="sr-ME" href="https://www.restaurantshasi.me/mne/" />
+<link rel="alternate" hreflang="sq" href="https://www.restaurantshasi.me/sq/" />
+<link rel="alternate" hreflang="de" href="https://www.restaurantshasi.me/de/" />
+<link rel="alternate" hreflang="ru" href="https://www.restaurantshasi.me/ru/" />
+<link rel="alternate" hreflang="x-default" href="https://www.restaurantshasi.me/" />
 
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Restaurant SHASI" />
 <meta property="og:title" content="Restaurant SHASI — Lake Shasi, Ulcinj" />
-<meta property="og:description" content="Fresh fish, lakeside serenity, and family hospitality on Lake Shasi, Ulcinj, Montenegro — since 2002." />
+<meta property="og:description" content="Fresh fish, lakeside serenity, and family hospitality on Lake Shasi. On the shore of Lake Shasi, Ulcinj, Montenegro." />
 <meta property="og:url" content="https://www.restaurantshasi.me/" />
 <meta property="og:image" content="https://www.restaurantshasi.me/media/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
@@ -20,7 +30,7 @@
 <meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Restaurant SHASI — Lake Shasi, Ulcinj" />
-<meta name="twitter:description" content="Fresh fish, lakeside serenity, and family hospitality on Lake Shasi, Ulcinj, Montenegro — since 2002." />
+<meta name="twitter:description" content="Fresh fish, lakeside serenity, and family hospitality on Lake Shasi. On the shore of Lake Shasi, Ulcinj, Montenegro." />
 <meta name="twitter:image" content="https://www.restaurantshasi.me/media/og-image.jpg" />
 
 <script type="application/ld+json">
@@ -31,7 +41,11 @@
   "image": "https://www.restaurantshasi.me/media/og-image.jpg",
   "url": "https://www.restaurantshasi.me/",
   "telephone": "+382 69 567 555",
-  "servesCuisine": ["Seafood", "Mediterranean", "Montenegrin"],
+  "servesCuisine": [
+    "Seafood",
+    "Mediterranean",
+    "Montenegrin"
+  ],
   "priceRange": "€€",
   "acceptsReservations": "True",
   "address": {
@@ -49,36 +63,71 @@
   "sameAs": [
     "https://www.instagram.com/restaurantshasii/",
     "https://www.facebook.com/restaurantshaii/",
-    "https://www.tripadvisor.com/Restaurant_Review-g4559581-d19940670-Reviews-Restaurant_Shasi-Vladimir_Ulcinj_Municipality.html",
+    "https://www.tripadvisor.com/UserReviewEdit-g4559581-d19940670-Restaurant_Shasi-Vladimir_Ulcinj_Municipality.html",
     "https://www.booking.com/hotel/me/shasi-eco-lodge.html"
   ],
   "openingHoursSpecification": [
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "12:00", "closes": "21:00", "validFrom": "2026-01-01", "validThrough": "2026-04-30" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "10:00", "closes": "23:00", "validFrom": "2026-05-01", "validThrough": "2026-09-30" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "12:00", "closes": "21:00", "validFrom": "2026-10-01", "validThrough": "2026-12-31" }
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "12:00",
+      "closes": "21:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "10:00",
+      "closes": "23:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "12:00",
+      "closes": "21:00"
+    }
   ]
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
 <header class="site-header" id="top">
   <div class="header-inner">
-    <a class="brand" href="#top" aria-label="Restaurant SHASI"><img class="brand-logo" src="media/logo.svg" alt="Restaurant SHASI" width="58" height="58" /></a>
+    <a class="brand" href="#top" aria-label="Restaurant SHASI"><img class="brand-logo" src="./media/logo.svg" alt="Restaurant SHASI" width="58" height="58" /></a>
 
     <nav class="main-nav" id="main-nav">
-      <a href="#top" data-i18n="nav_home">Home</a>
-      <a href="#about" data-i18n="nav_about">About Us</a>
-      <a href="#moments" data-i18n="nav_moments">Moments</a>
-      <a href="#menu" data-i18n="nav_menu">Menu</a>
-      <a href="#activities" data-i18n="nav_activities">Activities</a>
-      <a href="#reservations" data-i18n="nav_reservations">Reserve</a>
-      <a href="#location" data-i18n="nav_location">Location</a>
-      <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <a href="#top">Home</a>
+      <a href="/#about">About Us</a>
+      <a href="/#moments">Moments</a>
+      <a href="/#menu">Menu</a>
+      <a href="/#activities">Activities</a>
+      <a href="/#reservations">Reserve</a>
+      <a href="/#location">Location</a>
+      <a href="/#contact">Contact</a>
     </nav>
 
     <div class="header-actions">
@@ -87,7 +136,13 @@
           <span id="lang-current">EN</span>
           <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5"/></svg>
         </button>
-        <ul class="lang-list" id="lang-list" role="listbox"></ul>
+        <ul class="lang-list" id="lang-list" role="listbox">
+          <li><a href="https://www.restaurantshasi.me/" class="active" aria-current="true">English</a></li>
+<li><a href="https://www.restaurantshasi.me/mne/">Crnogorski</a></li>
+<li><a href="https://www.restaurantshasi.me/sq/">Shqip</a></li>
+<li><a href="https://www.restaurantshasi.me/de/">Deutsch</a></li>
+<li><a href="https://www.restaurantshasi.me/ru/">Русский</a></li>
+        </ul>
       </div>
       <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -107,13 +162,13 @@
     </div>
     <div class="section-inner hero-content-wrap">
       <div class="hero-copy">
-        <span class="eyebrow" data-i18n="hero_tag">Since 2002</span>
-        <h1 data-i18n="hero_title">Restaurant SHASI</h1>
-        <p data-i18n="hero_subtitle">Fresh fish, lakeside serenity, and family hospitality on Lake Shasi</p>
+        <span class="eyebrow">Since 2002</span>
+        <h1>Restaurant SHASI</h1>
+        <p>Fresh fish, lakeside serenity, and family hospitality on Lake Shasi</p>
         <div class="hero-actions">
-          <a href="#reservations" class="btn btn-primary" data-i18n="cta_reserve">Reserve a Table</a>
-          <a href="#menu" class="btn btn-outline-light" data-i18n="cta_menu">View Menu</a>
-          <a id="hero-book" href="#" target="_blank" rel="noopener" class="btn btn-ghost" data-i18n="cta_book">Book a Room</a>
+          <a href="#reservations" class="btn btn-primary">Reserve a Table</a>
+          <a href="#menu" class="btn btn-outline-light">View Menu</a>
+          <a id="hero-book" href="https://www.booking.com/hotel/me/shasi-eco-lodge.html" target="_blank" rel="noopener" class="btn btn-ghost">Book a Room</a>
         </div>
       </div>
     </div>
@@ -123,8 +178,14 @@
   <section class="section" id="about">
     <div class="section-inner about-grid">
       <div class="about-copy">
-        <span class="eyebrow eyebrow-dark" data-i18n="about_title">About Us</span>
-        <p id="about-text" class="about-text"></p>
+        <span class="eyebrow eyebrow-dark">About Us</span>
+        <p class="about-text">In the immediate vicinity of Lake Shasi in the municipality of Ulcinj lies the beautiful Restaurant SHASI. It fits perfectly into the space and ambience of nature. Beyond the beautiful view and surroundings, we offer top-quality fish specialities — always fresh — and service of an exceptional level.
+
+The restaurant also has 4 double rooms available year-round, and offers auto-camp services.
+
+And finally, a few interesting facts about the lake itself: it lies some 20km from Ulcinj, covers an area of 5.5km², and reaches depths of up to 8m. It is also the second crypto-depression in Montenegro.
+
+Welcome!</p>
       </div>
       <div class="about-media" aria-hidden="true">
         <svg viewBox="0 0 360 460" class="lake-illustration">
@@ -147,15 +208,15 @@
   <section class="section section-alt" id="moments">
     <div class="section-inner">
       <div class="moments-head">
-        <span class="eyebrow eyebrow-dark" data-i18n="moments_title">From the Lake</span>
-        <p data-i18n="moments_subtitle">A few scenes from life at SHASI.</p>
+        <span class="eyebrow eyebrow-dark">From the Lake</span>
+        <p>A few scenes from life at SHASI — light on the water, the day&#39;s catch, evenings by the reeds.</p>
       </div>
       <div id="moments-embeds" class="moments-grid"></div>
-      <a id="moments-fallback" class="moments-fallback" href="#" target="_blank" rel="noopener" hidden>
+      <a id="moments-fallback" class="moments-fallback" href="https://www.instagram.com/restaurantshasii/" target="_blank" rel="noopener" hidden>
         <span class="moments-fallback-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.7 4.92 4.92.06 1.25.07 1.62.07 4.81s-.01 3.56-.07 4.81c-.15 3.2-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07s-3.6-.01-4.85-.07c-3.26-.15-4.77-1.72-4.92-4.92-.06-1.25-.07-1.62-.07-4.81s.02-3.56.07-4.81C2.38 3.97 3.9 2.42 7.15 2.27 8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.14 0-3.5.01-4.74.07-2.27.1-3.34 1.19-3.44 3.44C3.76 8.75 3.75 9.11 3.75 12s.01 3.25.07 4.49c.1 2.25 1.16 3.34 3.44 3.44 1.24.06 1.6.07 4.74.07s3.5-.01 4.74-.07c2.27-.1 3.34-1.18 3.44-3.44.06-1.24.07-1.6.07-4.49s-.01-3.25-.07-4.49c-.1-2.25-1.17-3.34-3.44-3.44C15.5 4.01 15.14 4 12 4zm0 3.7a4.3 4.3 0 1 1 0 8.6 4.3 4.3 0 0 1 0-8.6zm0 1.8a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm4.5-2.1a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
         </span>
-        <span id="moments-cta-text" data-i18n="moments_cta">Follow @restaurantshasii</span>
+        <span id="moments-cta-text">Follow @restaurantshasii</span>
       </a>
     </div>
   </section>
@@ -163,7 +224,7 @@
   <!-- MENU -->
   <section class="section" id="menu">
     <div class="section-inner">
-      <span class="eyebrow eyebrow-dark" data-i18n="menu_title">Our Menu</span>
+      <span class="eyebrow eyebrow-dark">Our Menu</span>
 
       <div class="menu-frame">
         <span class="frame-corner tl" aria-hidden="true"><svg viewBox="0 0 42 42" fill="none"><path d="M2 2C12 6 16 16 13 27" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M2 2C9 9 10 18 6 25" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M2 2C16 4 24 11 26 22" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><g transform="translate(26,22)" fill="currentColor"><circle cx="0" cy="-3.2" r="2.1"/><circle cx="2.8" cy="-1" r="2.1"/><circle cx="1.7" cy="2.6" r="2.1"/><circle cx="-1.7" cy="2.6" r="2.1"/><circle cx="-2.8" cy="-1" r="2.1"/><circle cx="0" cy="0" r="1.3" fill-opacity=".6"/></g><g transform="translate(13,27)" fill="currentColor"><circle cx="0" cy="-2.3" r="1.5" fill-opacity=".9"/><circle cx="2" cy="-0.7" r="1.5" fill-opacity=".9"/><circle cx="1.2" cy="1.9" r="1.5" fill-opacity=".9"/><circle cx="-1.2" cy="1.9" r="1.5" fill-opacity=".9"/><circle cx="-2" cy="-0.7" r="1.5" fill-opacity=".9"/></g></svg></span>
@@ -173,23 +234,99 @@
 
         <div class="menu-controls">
           <div class="menu-tabs" role="tablist" id="menu-tabs">
-            <button class="menu-tab active" data-tab="food" role="tab" aria-selected="true" data-i18n="tab_food">Food</button>
-            <button class="menu-tab" data-tab="wine" role="tab" aria-selected="false" data-i18n="tab_wine">Wine</button>
-            <button class="menu-tab" data-tab="drinks" role="tab" aria-selected="false" data-i18n="tab_drinks">Drinks</button>
-            <button class="menu-tab" data-tab="kids" role="tab" aria-selected="false" data-i18n="tab_kids">Kids Menu</button>
+            <button class="menu-tab active" data-tab="food" role="tab" aria-selected="true">Food</button>
+            <button class="menu-tab" data-tab="wine" role="tab" aria-selected="false">Wine</button>
+            <button class="menu-tab" data-tab="drinks" role="tab" aria-selected="false">Drinks</button>
+            <button class="menu-tab" data-tab="kids" role="tab" aria-selected="false">Kids Menu</button>
           </div>
           <div class="menu-search">
-            <input type="search" id="menu-search" data-i18n-placeholder="search_placeholder" placeholder="Search the menu…" />
+            <input type="search" id="menu-search" placeholder="Search the menu…" />
           </div>
         </div>
 
         <div id="menu-panels">
-          <div class="menu-panel active" data-panel="food" id="panel-food"></div>
-          <div class="menu-panel" data-panel="wine" id="panel-wine"></div>
-          <div class="menu-panel" data-panel="drinks" id="panel-drinks"></div>
-          <div class="menu-panel" data-panel="kids" id="panel-kids"></div>
+          <div class="menu-panel active" data-panel="food" id="panel-food"><div class="menu-category" data-cat-name="salads">
+      <h3>Salads</h3>
+      
+      <div class="menu-item"><div><div class="menu-item-name">Shopska Salad</div><span class="menu-item-weight">300gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Mixed Salad</div><span class="menu-item-weight">300gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">3.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Greek Salad</div><span class="menu-item-weight">300gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Green Salad</div><span class="menu-item-weight">250gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">3.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Roasted Peppers</div><span class="menu-item-weight">250gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Olives</div><span class="menu-item-weight">150gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Chicken Salad</div><span class="menu-item-weight">300gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">7.00 €</div></div>
+    </div><div class="menu-category" data-cat-name="cold starters">
+      <h3>Cold Starters</h3>
+      
+      <div class="menu-item"><div><div class="menu-item-name">Octopus Salad</div><span class="menu-item-weight">200gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">14.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Smoked Beef</div><span class="menu-item-weight">150gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">6.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Yellow Cheese (homemade)</div><span class="menu-item-weight">150gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">5.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">White Cheese (homemade)</div><span class="menu-item-weight">150gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Goat Cheese (homemade)</div><span class="menu-item-weight">150gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">6.00 €</div></div>
+    </div><div class="menu-category" data-cat-name="warm starters">
+      <h3>Warm Starters</h3>
+      
+      <div class="menu-item"><div><div class="menu-item-name">Seafood Platter for 2 (calamari, seafood risotto, shrimp)</div><span class="menu-item-weight">950gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">37.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Grilled Vegetables</div><span class="menu-item-weight">300gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">4.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Grilled Octopus</div><span class="menu-item-weight">200gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">16.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Seafood Risotto</div><span class="menu-item-weight">300gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">10.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Spaghetti Bolognese</div><span class="menu-item-weight">300gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">8.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Seafood Spaghetti</div><span class="menu-item-weight">300gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">10.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Shrimp Spaghetti</div><span class="menu-item-weight">300gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">11.00 €</div></div>
+    </div><div class="menu-category" data-cat-name="soups">
+      <h3>Soups</h3>
+      
+      <div class="menu-item"><div><div class="menu-item-name">Fish Soup</div><span class="menu-item-weight">250ml</span></div><div class="menu-item-leader"></div><div class="menu-item-price">3.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Beef Soup</div><span class="menu-item-weight">250ml</span></div><div class="menu-item-leader"></div><div class="menu-item-price">3.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Chicken Soup</div><span class="menu-item-weight">250ml</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div>
+    </div><div class="menu-category" data-cat-name="home specialities">
+      <h3>Home Specialities</h3>
+      
+      <div class="menu-item"><div><div class="menu-item-name">Eel in Risotto</div><span class="menu-item-weight">250gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">17.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Mullet in Sauce</div><span class="menu-item-weight">300-400gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">15.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Carp in Sauce</div><span class="menu-item-weight">300-400gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">15.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Trout in Sauce</div><span class="menu-item-weight">300-400gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">15.00 €</div></div>
+    </div><div class="menu-category" data-cat-name="meat menu">
+      <h3>Meat Menu</h3>
+      <p class="menu-note">Served with: French fries, white mushroom sauce, vegetables, rice</p>
+      <div class="menu-item"><div><div class="menu-item-name">Beef Steak</div><span class="menu-item-weight">250gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">20.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Medallions</div><span class="menu-item-weight">250gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">20.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Chicken Fillet</div><span class="menu-item-weight">250gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">8.00 €</div></div>
+    </div><div class="menu-category" data-cat-name="fish">
+      <h3>Fish</h3>
+      <p class="menu-note">Served with: boiled potatoes and grilled vegetables</p>
+      <div class="menu-item"><div><div class="menu-item-name">Sea Bass</div><span class="menu-item-weight">1kg</span></div><div class="menu-item-leader"></div><div class="menu-item-price">32.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Gilthead Bream</div><span class="menu-item-weight">1kg</span></div><div class="menu-item-leader"></div><div class="menu-item-price">32.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Fish (1st category)</div><span class="menu-item-weight">1kg</span></div><div class="menu-item-leader"></div><div class="menu-item-price">50.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Eel</div><span class="menu-item-weight">300gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">16.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Trout</div><span class="menu-item-weight">1kg</span></div><div class="menu-item-leader"></div><div class="menu-item-price">25.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Mullet</div><span class="menu-item-weight">1kg</span></div><div class="menu-item-leader"></div><div class="menu-item-price">25.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Carp</div><span class="menu-item-weight">1kg</span></div><div class="menu-item-leader"></div><div class="menu-item-price">27.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Shrimp</div><span class="menu-item-weight">300gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">15.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Shrimp Saganaki</div><span class="menu-item-weight">300gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">16.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Grilled Calamari</div><span class="menu-item-weight">300gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">13.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Fried Calamari</div><span class="menu-item-weight">300gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">14.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Fish Fillet</div><span class="menu-item-weight">250gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">10.00 €</div></div>
+    </div><div class="menu-category" data-cat-name="dessert">
+      <h3>Dessert</h3>
+      
+      <div class="menu-item"><div><div class="menu-item-name">Dessert of the Day</div><span class="menu-item-weight">200gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Tespixhe (traditional)</div><span class="menu-item-weight">200gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Pancakes</div><span class="menu-item-weight">300gr</span></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div>
+    </div></div>
+          <div class="menu-panel" data-panel="wine" id="panel-wine"><div class="menu-category" data-cat-name="red wines">
+      <h3>Red Wines</h3>
+      <div class="wine-group"><h4>Montenegro</h4><div class="menu-item"><div><div class="menu-item-name">Zavjet Vranac</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">16.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Zavjet Vranac Barrique</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">20.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Vranac</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">15.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Vranac</div><span class="menu-item-weight">0.187L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Cabernet</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">15.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Merlot</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">15.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Vranac Pro Corde</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">18.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Vranac Pro Corde</div><span class="menu-item-weight">0.187L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">4.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Epoha</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">30.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Meduna</div><span class="menu-item-weight">0.5L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">28.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Vladika</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">30.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Vranac Barrique</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">35.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Vranac Reserve</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">65.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Premijer</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">180.00 €</div></div></div><div class="wine-group"><h4>Italy</h4><div class="menu-item"><div><div class="menu-item-name">Montepulciano D&#39;Abruzzo — Marina Cvetić</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">75.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Primitivo Puglia — Cantina Denese</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">28.00 €</div></div></div><div class="wine-group"><h4>France</h4><div class="menu-item"><div><div class="menu-item-name">Château La Prade — Francs-Côtes de Bordeaux</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">35.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Monsieur Louis Reserve</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">30.00 €</div></div></div><div class="wine-group"><h4>Croatia</h4><div class="menu-item"><div><div class="menu-item-name">De Gotho Pinot Crni</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">35.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Dingač Matuško</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">60.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Plavac Mali Grgić</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">90.00 €</div></div></div>
+    </div><div class="menu-category" data-cat-name="white wine">
+      <h3>White Wine</h3>
+      <div class="wine-group"><h4>Montenegro</h4><div class="menu-item"><div><div class="menu-item-name">Zavjet (domaća)</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">18.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Krstač</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">15.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Sauvignon</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">15.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Chardonnay</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">15.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Chardonnay</div><span class="menu-item-weight">0.187L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Pro Anima Chardonnay-Sauvignon</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">22.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Malvazija</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">24.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Pro Anima Pinot Blanc</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">24.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Luča</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">30.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Chardonnay Barrique</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">32.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Nota</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">48.00 €</div></div></div><div class="wine-group"><h4>Serbia</h4><div class="menu-item"><div><div class="menu-item-name">Kovačević Chardonnay</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">35.00 €</div></div></div><div class="wine-group"><h4>Croatia</h4><div class="menu-item"><div><div class="menu-item-name">Pošip Grgić</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">80.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Pošip Čara</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">40.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Malvazija Benvenuti</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">42.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">De Gotho Graševina</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">33.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Graševina Kutjevo</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">25.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Graševina Kutjevo</div><span class="menu-item-weight">0.187L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">5.00 €</div></div></div><div class="wine-group"><h4>Italy</h4><div class="menu-item"><div><div class="menu-item-name">Marina Cvetić Masciarelli Chardonnay</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">120.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Pinot Grigio Anticavigna</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">27.00 €</div></div></div>
+    </div><div class="menu-category" data-cat-name="rosé wine">
+      <h3>Rosé Wine</h3>
+      <div class="wine-group"><h4>Montenegro</h4><div class="menu-item"><div><div class="menu-item-name">Rosé</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">15.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Rosé</div><span class="menu-item-weight">0.187L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div></div><div class="wine-group"><h4>Croatia</h4><div class="menu-item"><div><div class="menu-item-name">Rosé Kutjevo</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">25.00 €</div></div></div>
+    </div><div class="menu-category" data-cat-name="sparkling wine">
+      <h3>Sparkling Wine</h3>
+      <div class="wine-group"><div class="menu-item"><div><div class="menu-item-name">Moët &amp; Chandon Brut Imperial</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">150.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Val Rosé Plantaže</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">30.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Val Brut Plantaže</div><span class="menu-item-weight">0.75L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">20.00 €</div></div></div>
+    </div></div>
+          <div class="menu-panel" data-panel="drinks" id="panel-drinks"><div class="menu-category" data-cat-name="non-alcoholic drinks">
+      <h3>Non-Alcoholic Drinks</h3>
+      
+      <div class="menu-item"><div><div class="menu-item-name">Coca Cola</div><span class="menu-item-weight">0.25L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Fanta</div><span class="menu-item-weight">0.25L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Sprite</div><span class="menu-item-weight">0.25L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Bitter Lemon</div><span class="menu-item-weight">0.25L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Tonic Water</div><span class="menu-item-weight">0.25L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Fruit Juice (still)</div><span class="menu-item-weight">0.20L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Ice Tea</div><span class="menu-item-weight">0.33L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Sparkling Water</div><span class="menu-item-weight">0.25L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">1.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Sparkling Water</div><span class="menu-item-weight">0.70L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">3.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Still Water</div><span class="menu-item-weight">0.25L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">1.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Still Water</div><span class="menu-item-weight">0.70L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">3.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Red Bull</div><span class="menu-item-weight">0.25L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Freshly Squeezed Orange</div><span class="menu-item-weight">0.33L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">3.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Freshly Squeezed Lemon</div><span class="menu-item-weight">0.33L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">3.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Pomegranate Juice</div><span class="menu-item-weight">0.33L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">3.00 €</div></div>
+    </div><div class="menu-category" data-cat-name="warm drinks">
+      <h3>Warm Drinks</h3>
+      
+      <div class="menu-item"><div><div class="menu-item-name">Turkish Coffee</div><span class="menu-item-weight">0.20L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Espresso</div><span class="menu-item-weight">0.10L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">1.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Cappuccino</div><span class="menu-item-weight">0.20L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Nescafe</div><span class="menu-item-weight">0.20L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Filter Coffee</div><span class="menu-item-weight">0.20L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Tea</div><span class="menu-item-weight">0.20L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">1.50 €</div></div>
+    </div><div class="menu-category" data-cat-name="beer">
+      <h3>Beer</h3>
+      
+      <div class="menu-item"><div><div class="menu-item-name">Nikšić Unfiltered</div><span class="menu-item-weight">0.33L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">3.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Nikšićko</div><span class="menu-item-weight">0.33L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Nikšićko Gold</div><span class="menu-item-weight">0.33L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Tuborg</div><span class="menu-item-weight">0.33L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Heineken</div><span class="menu-item-weight">0.25L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">3.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Draught Beer</div><span class="menu-item-weight">0.33L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div>
+    </div><div class="menu-category" data-cat-name="whiskey">
+      <h3>Whiskey</h3>
+      
+      <div class="menu-item"><div><div class="menu-item-name">Johnny Walker Red Label</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Johnny Walker Black Label</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Chivas Regal</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Jack Daniels</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div>
+    </div><div class="menu-category" data-cat-name="cognac">
+      <h3>Cognac</h3>
+      
+      <div class="menu-item"><div><div class="menu-item-name">Courvoisier V.S</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">5.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Hennessy V.S</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">5.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Skenderbeg</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Stock 84</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div>
+    </div><div class="menu-category" data-cat-name="natural fruit brandies &amp; spirits">
+      <h3>Natural Fruit Brandies &amp; Spirits</h3>
+      
+      <div class="menu-item"><div><div class="menu-item-name">Grape Brandy</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Quince Brandy</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">3.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Apricot Brandy</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">3.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Plum Brandy</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">3.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Prvijenac</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Beluga Noble (vodka)</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Oyster Adriatic Gin</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Oyster Adriatic Citrus</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div>
+    </div><div class="menu-category" data-cat-name="liqueurs">
+      <h3>Liqueurs</h3>
+      
+      <div class="menu-item"><div><div class="menu-item-name">Gorki List</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div><div class="menu-item"><div><div class="menu-item-name">Jägermeister</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">3.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Amaro Montenegro</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">3.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Baileys</div><span class="menu-item-weight">0.03L</span></div><div class="menu-item-leader"></div><div class="menu-item-price">3.00 €</div></div>
+    </div></div>
+          <div class="menu-panel" data-panel="kids" id="panel-kids"><div class="menu-category" data-cat-name="kids menu">
+      <h3>Kids Menu</h3>
+      
+      <div class="menu-item"><div><div class="menu-item-name">Fish Fingers</div></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Chicken Fillet</div></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Fried Chicken Fillet</div></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Spaghetti Bolognese</div></div><div class="menu-item-leader"></div><div class="menu-item-price">4.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">French Fries</div></div><div class="menu-item-leader"></div><div class="menu-item-price">2.50 €</div></div>
+    </div></div>
         </div>
-        <p class="no-results" id="no-results" hidden data-i18n="no_results">No dishes match your search.</p>
+        <p class="no-results" id="no-results" hidden>No dishes match your search.</p>
       </div>
     </div>
   </section>
@@ -197,16 +334,28 @@
   <!-- ACTIVITIES & CAMPING -->
   <section class="section" id="activities">
     <div class="section-inner">
-      <span class="eyebrow eyebrow-dark" data-i18n="activities_title">Activities &amp; Camping</span>
-      <div class="activities-grid" id="activities-content"></div>
+      <span class="eyebrow eyebrow-dark">Activities &amp; Camping</span>
+      <div class="activities-grid" id="activities-content"><div class="menu-category">
+      <h3>Camping</h3>
+      <div class="menu-item"><div><div class="menu-item-name">Campervan</div><span class="menu-item-weight">per night</span></div><div class="menu-item-leader"></div><div class="menu-item-price">20.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Car Camp</div><span class="menu-item-weight">per night</span></div><div class="menu-item-leader"></div><div class="menu-item-price">15.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Moto Camp</div><span class="menu-item-weight">per night</span></div><div class="menu-item-leader"></div><div class="menu-item-price">15.00 €</div></div>
+      <p class="menu-note" style="margin-top:10px">Includes electricity, toilet, and shower.</p>
+    </div><div class="menu-category">
+      <h3>On the Lake</h3>
+      <div class="menu-item"><div><div class="menu-item-name">Platform Restaurant Boat (10+ guests)</div><span class="menu-item-weight">per hour</span></div><div class="menu-item-leader"></div><div class="menu-item-price">70.00 €</div></div><div class="menu-item"><div><div class="menu-item-name">Boat Tour</div><span class="menu-item-weight">40 minutes</span></div><div class="menu-item-leader"></div><div class="menu-item-price">30.00 €</div></div>
+      
+    </div><div class="menu-category">
+      <h3>Fishing Trip</h3>
+      <div class="menu-item"><div><div class="menu-item-name">Transport to Fishing Spot</div><span class="menu-item-weight">round trip</span></div><div class="menu-item-leader"></div><div class="menu-item-price">30.00 €</div></div>
+      <p class="menu-note" style="margin-top:10px">All fishing equipment is your own.</p>
+    </div></div>
     </div>
   </section>
 
   <!-- RESERVATIONS -->
   <section class="section" id="reservations">
     <div class="section-inner reservations-wrap">
-      <span class="eyebrow eyebrow-dark" data-i18n="reserve_title">Reserve a Table</span>
-      <p class="reserve-subtitle" data-i18n="reserve_subtitle">Choose a date and time — your table is held for two hours. We'll confirm by email.</p>
+      <span class="eyebrow eyebrow-dark">Reserve a Table</span>
+      <p class="reserve-subtitle">Choose a date and time — your table is held for two hours. We&#39;ll confirm by email.</p>
 
       <div class="reservation-frame">
         <span class="frame-corner tl" aria-hidden="true"><svg viewBox="0 0 42 42" fill="none"><path d="M2 2C12 6 16 16 13 27" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M2 2C9 9 10 18 6 25" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M2 2C16 4 24 11 26 22" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><g transform="translate(26,22)" fill="currentColor"><circle cx="0" cy="-3.2" r="2.1"/><circle cx="2.8" cy="-1" r="2.1"/><circle cx="1.7" cy="2.6" r="2.1"/><circle cx="-1.7" cy="2.6" r="2.1"/><circle cx="-2.8" cy="-1" r="2.1"/><circle cx="0" cy="0" r="1.3" fill-opacity=".6"/></g><g transform="translate(13,27)" fill="currentColor"><circle cx="0" cy="-2.3" r="1.5" fill-opacity=".9"/><circle cx="2" cy="-0.7" r="1.5" fill-opacity=".9"/><circle cx="1.2" cy="1.9" r="1.5" fill-opacity=".9"/><circle cx="-1.2" cy="1.9" r="1.5" fill-opacity=".9"/><circle cx="-2" cy="-0.7" r="1.5" fill-opacity=".9"/></g></svg></span>
@@ -217,45 +366,45 @@
         <form id="reservation-form" class="reservation-form" novalidate>
         <div class="form-row">
           <label>
-            <span data-i18n="reserve_name">Full name</span>
+            <span>Full name</span>
             <input type="text" name="name" required autocomplete="name" maxlength="100" />
           </label>
           <label>
-            <span data-i18n="reserve_guests">Guests</span>
+            <span>Guests</span>
             <input type="number" name="guests" min="1" max="60" value="2" required inputmode="numeric" />
           </label>
         </div>
         <div class="form-row">
           <label>
-            <span data-i18n="reserve_date">Date</span>
+            <span>Date</span>
             <input type="date" name="date" required />
           </label>
           <label>
-            <span data-i18n="reserve_time">Time</span>
+            <span>Time</span>
             <select name="time" required></select>
           </label>
         </div>
         <div class="form-row">
           <label>
-            <span data-i18n="reserve_email">Email</span>
+            <span>Email</span>
             <input type="email" name="email" required autocomplete="email" maxlength="150" />
           </label>
           <label>
-            <span data-i18n="reserve_phone">Phone (optional)</span>
+            <span>Phone (optional)</span>
             <input type="tel" name="phone" autocomplete="tel" maxlength="40" />
           </label>
         </div>
         <label class="form-full">
-          <span data-i18n="reserve_notes">Notes (optional)</span>
+          <span>Notes (optional)</span>
           <textarea name="notes" rows="2" maxlength="400"></textarea>
         </label>
 
         <div class="hp-field" aria-hidden="true"><label>Leave this empty<input type="text" name="hp" tabindex="-1" autocomplete="off" /></label></div>
 
         <button type="submit" class="btn btn-primary" id="reserve-submit">
-          <span data-i18n="reserve_submit">Request Table</span>
+          <span>Request Table</span>
         </button>
-        <p class="reserve-consent"><span data-i18n="reserve_consent">By pressing “Request Table” you accept our</span> <a href="privacy.html" data-i18n="reserve_consent_link">Privacy Policy</a>.</p>
+        <p class="reserve-consent"><span>By pressing “Request Table” you accept our</span> <a href="/privacy/">Privacy Policy</a>.</p>
         <p class="reservation-status" id="reservation-status" role="status" hidden></p>
         </form>
       </div>
@@ -266,9 +415,9 @@
   <section class="section section-alt" id="location">
     <div class="section-inner location-grid">
       <div class="location-copy">
-        <span class="eyebrow eyebrow-dark" data-i18n="location_title">Find Us</span>
-        <p data-i18n="location_text">On the shore of Lake Shasi, Ulcinj, Montenegro</p>
-        <a id="directions-link" href="#" target="_blank" rel="noopener" class="btn btn-outline-dark" data-i18n="directions">Get Directions</a>
+        <span class="eyebrow eyebrow-dark">Find Us</span>
+        <p>On the shore of Lake Shasi, Ulcinj, Montenegro</p>
+        <a id="directions-link" href="https://www.google.com/maps/dir/?api=1&destination=Restaurant%20SHASI%2C%20%C5%A0asko%20jezero%2C%20Ulcinj%2C%20Montenegro" target="_blank" rel="noopener" class="btn btn-outline-dark">Get Directions</a>
       </div>
       <div class="map-wrap">
         <iframe
@@ -276,10 +425,10 @@
           title="Restaurant SHASI location"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          src="">
+          src="https://www.google.com/maps?q=Restaurant+SHASI+%C5%A0asko+jezero+Ulcinj&amp;output=embed">
         </iframe>
-        <a class="map-fallback" id="map-fallback-link" href="#" target="_blank" rel="noopener">
-          <span data-i18n="directions">Get Directions</span> ↗
+        <a class="map-fallback" id="map-fallback-link" href="https://www.google.com/maps/dir/?api=1&destination=Restaurant%20SHASI%2C%20%C5%A0asko%20jezero%2C%20Ulcinj%2C%20Montenegro" target="_blank" rel="noopener">
+          <span>Get Directions</span> ↗
         </a>
       </div>
     </div>
@@ -288,45 +437,45 @@
   <!-- CONTACT -->
   <section class="section" id="contact">
     <div class="section-inner">
-      <span class="eyebrow eyebrow-dark" data-i18n="contact_title">Contact &amp; Info</span>
+      <span class="eyebrow eyebrow-dark">Contact &amp; Info</span>
       <div class="contact-grid">
         <div class="contact-card">
-          <h3 data-i18n="phone_label">Call Us</h3>
-          <div id="phone-list" class="phone-list"></div>
+          <h3>Call Us</h3>
+          <div id="phone-list" class="phone-list"><a href="tel:+38269567555"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>+382 69 567 555</span></a><a href="tel:+38269592873"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>+382 69 592 873</span></a><a href="mailto:restorantshasi@gmail.com"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg><span>restorantshasi@gmail.com</span></a></div>
         </div>
         <div class="contact-card">
-          <h3 data-i18n="hours_label">Opening Hours</h3>
-          <div id="hours-list" class="hours-list"></div>
+          <h3>Opening Hours</h3>
+          <div id="hours-list" class="hours-list"><div class="hours-row"><span class="hours-period">January – April</span><span class="hours-time">12:00 – 21:00</span></div><div class="hours-row"><span class="hours-period">May – September</span><span class="hours-time">10:00 – 23:00</span></div><div class="hours-row"><span class="hours-period">October – December</span><span class="hours-time">12:00 – 21:00</span></div></div>
         </div>
         <div class="contact-card">
-          <h3 data-i18n="rooms_label">Rooms &amp; Camping</h3>
-          <p data-i18n="rooms_text">4 double rooms available year-round, plus auto-camp services.</p>
+          <h3>Rooms &amp; Camping</h3>
+          <p>4 double rooms available year-round, plus auto-camp services.</p>
         </div>
         <div class="contact-card">
-          <h3 data-i18n="book_label">Book Online</h3>
-          <a id="booking-link" href="#" target="_blank" rel="noopener" class="btn btn-outline-dark">Booking.com ↗</a>
+          <h3>Book a Room</h3>
+          <a id="booking-link" href="https://www.booking.com/hotel/me/shasi-eco-lodge.html" target="_blank" rel="noopener" class="btn btn-outline-dark">Booking.com ↗</a>
         </div>
         <div class="contact-card">
-          <h3 data-i18n="follow_label">Follow Us</h3>
+          <h3>Follow Us</h3>
           <div class="social-links">
-            <a id="ig-link" href="#" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
+            <a id="ig-link" href="https://www.instagram.com/restaurantshasii/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
               <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.7 4.92 4.92.06 1.25.07 1.62.07 4.81s-.01 3.56-.07 4.81c-.15 3.2-1.66 4.77-4.92 4.92-1.25.06-1.62.07-4.85.07s-3.6-.01-4.85-.07c-3.26-.15-4.77-1.72-4.92-4.92-.06-1.25-.07-1.62-.07-4.81s.02-3.56.07-4.81C2.38 3.97 3.9 2.42 7.15 2.27 8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.14 0-3.5.01-4.74.07-2.27.1-3.34 1.19-3.44 3.44C3.76 8.75 3.75 9.11 3.75 12s.01 3.25.07 4.49c.1 2.25 1.16 3.34 3.44 3.44 1.24.06 1.6.07 4.74.07s3.5-.01 4.74-.07c2.27-.1 3.34-1.18 3.44-3.44.06-1.24.07-1.6.07-4.49s-.01-3.25-.07-4.49c-.1-2.25-1.17-3.34-3.44-3.44C15.5 4.01 15.14 4 12 4zm0 3.7a4.3 4.3 0 1 1 0 8.6 4.3 4.3 0 0 1 0-8.6zm0 1.8a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm4.5-2.1a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
               Instagram
             </a>
-            <a id="fb-link" href="#" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook" hidden>
+            <a id="fb-link" href="https://www.facebook.com/restaurantshaii/" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook">
               <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H16.7V3.7C16.4 3.65 15.4 3.55 14.25 3.55c-2.4 0-4.05 1.47-4.05 4.15v2.25H7.5V13h2.7v8h3.3z"/></svg>
               Facebook
             </a>
           </div>
         </div>
         <div class="contact-card">
-          <h3 data-i18n="review_label">Leave a Review</h3>
+          <h3>Leave a Review</h3>
           <div class="social-links">
-            <a id="tripadvisor-link" href="#" target="_blank" rel="noopener" class="social-btn" aria-label="TripAdvisor">
+            <a id="tripadvisor-link" href="https://www.tripadvisor.com/UserReviewEdit-g4559581-d19940670-Restaurant_Shasi-Vladimir_Ulcinj_Municipality.html" target="_blank" rel="noopener" class="social-btn" aria-label="TripAdvisor">
               <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm0 5.2a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4Z"/><path fill="currentColor" d="M24 9.3c-1-.05-1.87.2-2.5.66C19.6 8.2 16 7.2 12 7.2S4.4 8.2 2.5 9.96c-.63-.46-1.5-.7-2.5-.66l1.5 1.65A6.2 6.2 0 0 0 0 15.2a6.15 6.15 0 0 0 10.9 3.9L12 20.4l1.1-1.3a6.15 6.15 0 0 0 10.9-3.9c0-1.7-.72-3.24-1.87-4.3L24 9.3ZM5.85 19.6a4.4 4.4 0 1 1 0-8.8 4.4 4.4 0 0 1 0 8.8Zm12.3 0a4.4 4.4 0 1 1 0-8.8 4.4 4.4 0 0 1 0 8.8ZM12 8.9c1.5 0 2.94.16 4.24.46a6.14 6.14 0 0 0-4.24 2.16 6.14 6.14 0 0 0-4.24-2.16C9.06 9.06 10.5 8.9 12 8.9Z"/></svg>
               TripAdvisor
             </a>
-            <a id="google-review-link" href="#" target="_blank" rel="noopener" class="social-btn" aria-label="Google">
+            <a id="google-review-link" href="https://www.google.com/maps/place/Restaurant+Shasi/@41.9799378,19.3375589,17z/data=!4m8!3m7!1s0x134e0fd613ce7cd3:0xddb79295aefe1157!8m2!3d41.9799378!4d19.3375589!9m1!1b1!16s%2Fg%2F1tdv2vvy" target="_blank" rel="noopener" class="social-btn" aria-label="Google">
               <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1Z"/><path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.99.66-2.25 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23Z"/><path fill="currentColor" d="M5.84 14.09A6.6 6.6 0 0 1 5.5 12c0-.73.12-1.43.34-2.09V7.07H2.18A11 11 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84Z"/><path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1a11 11 0 0 0-9.82 6.07l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38Z"/></svg>
               Google
             </a>
@@ -341,15 +490,16 @@
 <footer class="site-footer">
   <div class="section-inner footer-inner">
     <span>Restaurant SHASI — Šasko Jezero, Ulcinj</span>
-    <span id="footer-rights">All rights reserved.</span>
-    <a href="privacy.html" class="footer-privacy" data-i18n="privacy_link">Privacy Policy</a>
+    <span>All rights reserved.</span>
+    <a href="/privacy/" class="footer-privacy">Privacy Policy</a>
   </div>
   <div class="section-inner footer-credit">
     Made by <a href="https://www.linkedin.com/in/adrian-m-193765139/" target="_blank" rel="noopener">Adrian Mehmeti</a>
   </div>
 </footer>
 
-<script src="data.js"></script>
-<script src="script.js"></script>
+<script src="./site-data.js"></script>
+<script src="i18n.js"></script>
+<script src="./script.js"></script>
 </body>
 </html>

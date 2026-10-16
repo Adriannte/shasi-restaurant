@@ -4,6 +4,7 @@
   "private": true,
   "description": "Restaurant SHASI website with reservation functions (Netlify)",
   "scripts": {
+    "build": "node scripts/build.js",
     "test": "node --test tests/*.test.js"
   },
   "dependencies": {

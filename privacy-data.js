@@ -1,13 +1,16 @@
 /* Privacy policy text, 5 languages. {email} is replaced with SITE.email.
    Keep this in sync with what the site actually does (reservation form,
-   Netlify, Resend, Google Maps/Fonts, language stored in localStorage). */
-/* shown only when the Turnstile bot check is switched on (SITE.turnstileSiteKey) */
+   Netlify, Resend, Google Maps/Fonts). Node-only — baked into the static
+   /privacy/ pages by scripts/build.js, not shipped to the browser. */
+
+/* appended to the "Who receives it" section only when SITE.turnstileSiteKey
+   is set (the Cloudflare Turnstile bot check is switched on) */
 const PRIVACY_TURNSTILE = {
-  "en": " To block automated spam, the booking form uses Cloudflare Turnstile, which receives technical data such as your IP address and browser details.",
-  "mne": " Radi blokiranja automatskog spama, forma za rezervaciju koristi Cloudflare Turnstile, koji prima tehničke podatke poput vaše IP adrese i podataka o pregledaču.",
-  "sq": " Për të bllokuar spamin automatik, formulari i rezervimit përdor Cloudflare Turnstile, i cili merr të dhëna teknike si adresa juaj IP dhe detaje të shfletuesit.",
-  "de": " Zum Schutz vor automatisiertem Spam nutzt das Buchungsformular Cloudflare Turnstile, das technische Daten wie Ihre IP-Adresse und Browserdaten erhält.",
-  "ru": " Для защиты от автоматического спама форма бронирования использует Cloudflare Turnstile, который получает технические данные, например ваш IP-адрес и сведения о браузере."
+  en: " To block automated spam, the booking form uses Cloudflare Turnstile, which receives technical data such as your IP address and browser details.",
+  mne: " Radi blokiranja automatskog spama, forma za rezervaciju koristi Cloudflare Turnstile, koji prima tehničke podatke poput vaše IP adrese i podataka o pregledaču.",
+  sq: " Për të bllokuar spamin automatik, formulari i rezervimit përdor Cloudflare Turnstile, i cili merr të dhëna teknike si adresa juaj IP dhe detaje të shfletuesit.",
+  de: " Zum Schutz vor automatisiertem Spam nutzt das Buchungsformular Cloudflare Turnstile, das technische Daten wie Ihre IP-Adresse und Browserdaten erhält.",
+  ru: " Для защиты от автоматического спама форма бронирования использует Cloudflare Turnstile, который получает технические данные, например ваш IP-адрес и сведения о браузере."
 };
 
 const PRIVACY = {
@@ -22,7 +25,7 @@ const PRIVACY = {
       ["Who receives it", "Your request is emailed to the restaurant owner. To do this we use Netlify (website hosting and the booking function) and Resend (email delivery, servers in the United States). The page also loads Google Maps and Google Fonts, so Google may receive your IP address when you visit. We do not sell your data."],
       ["How long we keep it", "Reservation emails are kept for up to 12 months and then deleted. We do not keep a separate reservation database. For abuse prevention we also keep short-lived technical markers: counters (24 hours) and a one-time reservation ID (up to 30 days) so that a link cannot be used twice. They are stored in a hashed form that does not reveal your email address or IP address."],
       ["Your rights", "You can ask us for a copy of your data, to correct it, or to delete it, and you can object to how we use it. Write to {email}. You also have the right to complain to your data protection authority."],
-      ["Browser storage", "The site stores your chosen language in your browser (local storage) so it can remember it. This is not used to track you."]
+      ["Browser storage", "The site may store small preferences in your browser (local storage), such as a remembered form value. This is not used to track you."]
     ]
   },
   mne: {
@@ -36,7 +39,7 @@ const PRIVACY = {
       ["Ko ih prima", "Vaš zahtjev se šalje emailom vlasniku restorana. Za to koristimo Netlify (hosting sajta i funkciju za rezervacije) i Resend (slanje emailova, serveri u Sjedinjenim Državama). Stranica učitava i Google Maps i Google Fonts, pa Google može primiti vašu IP adresu kada posjetite sajt. Vaše podatke ne prodajemo."],
       ["Koliko dugo ih čuvamo", "Emailovi o rezervacijama čuvaju se do 12 mjeseci, a zatim se brišu. Ne vodimo posebnu bazu rezervacija. Radi sprječavanja zloupotrebe čuvamo i kratkotrajne tehničke oznake: brojače (24 sata) i jednokratni ID rezervacije (do 30 dana) kako se link ne bi mogao upotrijebiti dvaput. Čuvaju se u heširanom obliku koji ne otkriva vašu email adresu ni IP adresu."],
       ["Vaša prava", "Možete zatražiti kopiju svojih podataka, njihovu ispravku ili brisanje, i možete uložiti prigovor na način na koji ih koristimo. Pišite na {email}. Imate i pravo da podnesete žalbu organu nadležnom za zaštitu podataka."],
-      ["Pohranjivanje u pregledaču", "Sajt čuva izabrani jezik u vašem pregledaču (local storage) kako bi ga zapamtio. To se ne koristi za praćenje."]
+      ["Pohranjivanje u pregledaču", "Sajt može čuvati manje podatke u vašem pregledaču (local storage), poput zapamćene vrijednosti forme. To se ne koristi za praćenje."]
     ]
   },
   sq: {
@@ -50,7 +53,7 @@ const PRIVACY = {
       ["Kush i merr", "Kërkesa juaj i dërgohet me email pronarit të restorantit. Për këtë përdorim Netlify (hostimi i faqes dhe funksioni i rezervimit) dhe Resend (dërgimi i emailit, serverë në Shtetet e Bashkuara). Faqja ngarkon edhe Google Maps dhe Google Fonts, prandaj Google mund të marrë adresën tuaj IP kur vizitoni faqen. Ne nuk i shesim të dhënat tuaja."],
       ["Sa gjatë i ruajmë", "Emailet e rezervimeve ruhen deri në 12 muaj dhe pastaj fshihen. Ne nuk mbajmë një bazë të dhënash të veçantë rezervimesh. Për parandalimin e abuzimit ruajmë edhe shënues teknikë të përkohshëm: numërues (24 orë) dhe një ID rezervimi njëpërdorimshe (deri në 30 ditë), që një lidhje të mos përdoret dy herë. Ruhen në formë hash që nuk zbulon adresën tuaj të emailit ose IP-në."],
       ["Të drejtat tuaja", "Mund të kërkoni një kopje të të dhënave tuaja, korrigjimin ose fshirjen e tyre, dhe mund të kundërshtoni mënyrën si i përdorim. Shkruani në {email}. Keni gjithashtu të drejtë të bëni ankesë te autoriteti juaj për mbrojtjen e të dhënave."],
-      ["Ruajtja në shfletues", "Faqja ruan gjuhën që zgjidhni në shfletuesin tuaj (local storage) për ta mbajtur mend. Kjo nuk përdoret për t'ju gjurmuar."]
+      ["Ruajtja në shfletues", "Faqja mund të ruajë të dhëna të vogla në shfletuesin tuaj (local storage), si një vlerë e mbajtur mend e formularit. Kjo nuk përdoret për t'ju gjurmuar."]
     ]
   },
   de: {
@@ -64,7 +67,7 @@ const PRIVACY = {
       ["Wer sie erhält", "Ihre Anfrage wird per E-Mail an den Inhaber des Restaurants gesendet. Dafür nutzen wir Netlify (Website-Hosting und Buchungsfunktion) und Resend (E-Mail-Versand, Server in den USA). Die Seite lädt außerdem Google Maps und Google Fonts, daher kann Google beim Besuch Ihre IP-Adresse erhalten. Wir verkaufen Ihre Daten nicht."],
       ["Wie lange wir sie speichern", "Reservierungs-E-Mails werden bis zu 12 Monate aufbewahrt und danach gelöscht. Wir führen keine separate Reservierungsdatenbank. Zur Missbrauchsvermeidung speichern wir außerdem kurzlebige technische Markierungen: Zähler (24 Stunden) und eine einmalige Reservierungs-ID (bis zu 30 Tage), damit ein Link nicht zweimal verwendet werden kann. Sie werden gehasht gespeichert und verraten weder Ihre E-Mail-Adresse noch Ihre IP-Adresse."],
       ["Ihre Rechte", "Sie können Auskunft über Ihre Daten, deren Berichtigung oder Löschung verlangen und der Verarbeitung widersprechen. Schreiben Sie an {email}. Außerdem haben Sie das Recht, sich bei Ihrer Datenschutzbehörde zu beschweren."],
-      ["Speicherung im Browser", "Die Website speichert Ihre gewählte Sprache in Ihrem Browser (Local Storage), um sie sich zu merken. Das dient nicht dem Tracking."]
+      ["Speicherung im Browser", "Die Website kann kleine Angaben in Ihrem Browser speichern (Local Storage), etwa einen gemerkten Formularwert. Das dient nicht dem Tracking."]
     ]
   },
   ru: {
@@ -78,65 +81,9 @@ const PRIVACY = {
       ["Кто их получает", "Ваш запрос отправляется по электронной почте владельцу ресторана. Для этого мы используем Netlify (хостинг сайта и функцию бронирования) и Resend (отправка писем, серверы в США). Страница также загружает Google Maps и Google Fonts, поэтому Google может получить ваш IP-адрес при посещении сайта. Мы не продаём ваши данные."],
       ["Как долго мы их храним", "Письма с бронированиями хранятся до 12 месяцев, затем удаляются. Отдельной базы бронирований мы не ведём. Для предотвращения злоупотреблений мы также храним краткосрочные технические метки: счётчики (24 часа) и одноразовый идентификатор бронирования (до 30 дней), чтобы ссылку нельзя было использовать дважды. Они хранятся в хешированном виде и не раскрывают ваш адрес электронной почты или IP-адрес."],
       ["Ваши права", "Вы можете запросить копию своих данных, их исправление или удаление, а также возразить против их использования. Пишите на {email}. Вы также вправе подать жалобу в орган по защите данных."],
-      ["Хранение в браузере", "Сайт сохраняет выбранный вами язык в вашем браузере (local storage), чтобы его запомнить. Это не используется для отслеживания."]
+      ["Хранение в браузере", "Сайт может хранить небольшие данные в вашем браузере (local storage), например запомненное значение формы. Это не используется для отслеживания."]
     ]
   }
 };
 
-(function () {
-  "use strict";
-  let lang = localStorage.getItem("shasi_lang") || "en";
-  if (!LANGS.includes(lang)) lang = "en";
-
-  function render() {
-    const t = PRIVACY[lang];
-    document.documentElement.lang = lang === "mne" ? "sr" : lang;
-    document.title = t.title + " — Restaurant SHASI";
-    document.getElementById("lang-current").textContent = lang.toUpperCase();
-    document.querySelectorAll("#lang-list button").forEach((b) =>
-      b.classList.toggle("active", b.dataset.lang === lang));
-    document.getElementById("privacy-back").textContent = t.back;
-    document.getElementById("privacy-title").textContent = t.title;
-    document.getElementById("privacy-updated").textContent = t.updated;
-    const body = document.getElementById("privacy-sections");
-    body.innerHTML = "";
-    t.sections.forEach(([h, p]) => {
-      const h2 = document.createElement("h2");
-      h2.textContent = h;
-      const para = document.createElement("p");
-      para.textContent = p.replace(/\{email\}/g, SITE.email);
-      if (h === t.sections[3][0] && SITE.turnstileSiteKey) para.textContent += PRIVACY_TURNSTILE[lang];
-      body.append(h2, para);
-    });
-    document.getElementById("footer-rights").textContent = UI[lang].footer_rights;
-  }
-
-  function init() {
-    const list = document.getElementById("lang-list");
-    LANGS.forEach((code) => {
-      const li = document.createElement("li");
-      const btn = document.createElement("button");
-      btn.textContent = LANG_LABELS[code];
-      btn.dataset.lang = code;
-      btn.addEventListener("click", () => {
-        lang = code;
-        localStorage.setItem("shasi_lang", code);
-        list.classList.remove("open");
-        render();
-      });
-      li.appendChild(btn);
-      list.appendChild(li);
-    });
-    const langBtn = document.getElementById("lang-btn");
-    langBtn.addEventListener("click", () => {
-      const open = list.classList.toggle("open");
-      langBtn.setAttribute("aria-expanded", open ? "true" : "false");
-    });
-    document.addEventListener("click", (e) => {
-      if (!e.target.closest(".lang-switch")) list.classList.remove("open");
-    });
-    render();
-  }
-
-  document.addEventListener("DOMContentLoaded", init);
-})();
+module.exports = { PRIVACY, PRIVACY_TURNSTILE };
