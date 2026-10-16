@@ -20,22 +20,21 @@ function hash(value) {
     .slice(0, 32);
 }
 
+/* Only Netlify's own edge-set header is trusted for rate-limit bucketing.
+   client-ip / x-forwarded-for are caller-supplied and would let an
+   attacker pick a fresh "IP" on every request to dodge the per-IP limit. */
 function clientIp(event) {
-  const h = event.headers || {};
-  return (
-    h["x-nf-client-connection-ip"] ||
-    h["client-ip"] ||
-    (h["x-forwarded-for"] || "").split(",")[0].trim() ||
-    "unknown"
-  );
+  return (event.headers || {})["x-nf-client-connection-ip"] || "unknown";
 }
 
-/* POSTs from other websites are refused: if the browser sent an Origin it
-   must be this site */
+/* POSTs must carry an Origin header that matches this site. A missing
+   Origin is refused, not waved through — real browser form/fetch POSTs
+   from this site always send one, so this only blocks non-browser or
+   cross-site callers, which is the point. */
 function isSameOrigin(event) {
   const h = event.headers || {};
   const origin = h.origin;
-  if (!origin) return true; // non-browser callers carry no Origin; other checks still apply
+  if (!origin) return false;
   try {
     return new URL(origin).host === h.host;
   } catch {
@@ -43,32 +42,32 @@ function isSameOrigin(event) {
   }
 }
 
-async function bump(event, key) {
-  const current = (await store.get(event, key)) || { n: 0 };
-  current.n += 1;
-  await store.set(event, key, current);
-  return current.n;
-}
-
-/* returns { allowed, reason } — counters are keyed by hashed values only */
+/* returns { allowed, reason }. Any store failure fails CLOSED: if we can't
+   reliably count requests we can't reliably limit them, so the request is
+   refused rather than silently let through during an outage. */
 async function checkRateLimit(event, { email }) {
   const now = Date.now();
   const hour = Math.floor(now / HOUR_MS);
   const day = Math.floor(now / DAY_MS);
 
-  const ipCount = await bump(event, `rl:ip:${hash(clientIp(event))}:${hour}`);
-  if (ipCount > LIMITS.ipPerHour) return { allowed: false, reason: "ip" };
+  try {
+    const ipCount = await store.increment(event, `rl:ip:${hash(clientIp(event))}:${hour}`);
+    if (ipCount > LIMITS.ipPerHour) return { allowed: false, reason: "ip" };
 
-  const emailCount = await bump(event, `rl:email:${hash(email)}:${day}`);
-  if (emailCount > LIMITS.emailPerDay) return { allowed: false, reason: "email" };
+    const emailCount = await store.increment(event, `rl:email:${hash(email)}:${day}`);
+    if (emailCount > LIMITS.emailPerDay) return { allowed: false, reason: "email" };
 
-  const globalCount = await bump(event, `rl:global:${day}`);
-  if (globalCount === 1) {
-    await store.cleanup(event, { counterPrefixKeep: { day, hour }, doneMaxAgeMs: 30 * DAY_MS });
+    const globalCount = await store.increment(event, `rl:global:${day}`);
+    if (globalCount === 1) {
+      store.cleanup(event, { counterPrefixKeep: { day, hour }, doneMaxAgeMs: 30 * DAY_MS }).catch(() => {});
+    }
+    if (globalCount > LIMITS.globalPerDay) return { allowed: false, reason: "global" };
+
+    return { allowed: true };
+  } catch (err) {
+    console.error("rate-limit store unavailable, failing closed:", err.message);
+    return { allowed: false, reason: "store-unavailable" };
   }
-  if (globalCount > LIMITS.globalPerDay) return { allowed: false, reason: "global" };
-
-  return { allowed: true };
 }
 
 /* Cloudflare Turnstile (optional): enforced only when a secret is configured */
@@ -90,24 +89,10 @@ async function verifyTurnstile(event, token) {
   }
 }
 
-/* one-time use of a confirm/decline link */
-async function getDecision(event, id) {
-  return store.get(event, `done:${id}`);
-}
-async function markDecision(event, id, decision) {
-  return store.set(event, `done:${id}`, { decision, ts: Date.now() });
-}
-async function clearDecision(event, id) {
-  return store.del(event, `done:${id}`);
-}
-
 module.exports = {
   LIMITS,
   clientIp,
   isSameOrigin,
   checkRateLimit,
-  verifyTurnstile,
-  getDecision,
-  markDecision,
-  clearDecision
+  verifyTurnstile
 };

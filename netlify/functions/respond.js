@@ -11,21 +11,42 @@ const {
   esc,
   textFor
 } = require("./_shared");
-const { isSameOrigin, getDecision, markDecision, clearDecision } = require("./_guard");
+const { isSameOrigin } = require("./_guard");
+const store = require("./_store");
 
 const ENDPOINT = "/.netlify/functions/respond";
+
+function unavailablePage() {
+  return resultPageHtml({
+    title: "Temporarily unavailable",
+    message: "This could not be checked right now. Please open the link again in a minute."
+  });
+}
+
+function hiddenFields(token, action) {
+  return `<input type="hidden" name="token" value="${esc(token)}"/><input type="hidden" name="action" value="${esc(action)}"/>`;
+}
+
+/* Opening the emailed link (a GET) only ever shows this: no guest details
+   yet. Mail/link-scanning services that prefetch URLs found in emails only
+   issue GETs, so this keeps the guest's name/email/phone/notes out of
+   whatever fetched the link — a human has to press a button to see them. */
+function teaserPage(token) {
+  return pageHtml(
+    "Reservation request",
+    `<h1>Reservation request</h1><p>A new table reservation is waiting for your decision.</p>
+     <form method="POST" action="${ENDPOINT}">${hiddenFields(token, "view")}<button class="ok" type="submit">View &amp; respond</button></form>`
+  );
+}
 
 function detailsHtml(r) {
   const row = (k, v) => `<tr><td>${k}</td><td>${esc(v || "—")}</td></tr>`;
   return `<table>${row("Name", r.name)}${row("Email", r.email)}${row("Phone", r.phone)}${row("Date", r.date)}${row("Time", r.time + " (2h hold)")}${row("Guests", r.guests)}${row("Notes", r.notes)}</table>`;
 }
 
-/* Opening the emailed link only shows this page. Mail scanners and link
-   previewers issue GET requests, so nothing is sent until a human presses a
-   button (POST). */
 function choicePage(r, token) {
   const btn = (action, cls, label) =>
-    `<form method="POST" action="${ENDPOINT}"><input type="hidden" name="token" value="${esc(token)}"/><input type="hidden" name="action" value="${action}"/><button class="${cls}" type="submit">${label}</button></form>`;
+    `<form method="POST" action="${ENDPOINT}">${hiddenFields(token, action)}<button class="${cls}" type="submit">${label}</button></form>`;
   return pageHtml(
     "Reservation request",
     `<h1>Reservation request</h1>${detailsHtml(r)}${btn("confirm", "ok", "Confirm reservation")}${btn("decline", "no", "Decline (fully booked)")}
@@ -64,9 +85,16 @@ exports.handler = async (event) => {
   const params = method === "POST" ? parseForm(event) : event.queryStringParameters || {};
   const { token, action } = params;
 
-  if (action !== "confirm" && action !== "decline") {
+  if (!["confirm", "decline", "view"].includes(action)) {
     return htmlResponse(400, resultPageHtml({ title: "Invalid link", message: "This reservation link is malformed." }));
   }
+  if (action !== "view" && method === "POST" && !isSameOrigin(event)) {
+    return htmlResponse(403, resultPageHtml({ title: "Forbidden", message: "" }));
+  }
+  if (action === "view" && !isSameOrigin(event)) {
+    return htmlResponse(403, resultPageHtml({ title: "Forbidden", message: "" }));
+  }
+
   const reservation = verifyToken(token);
   if (!reservation || !reservation.id) {
     return htmlResponse(400, resultPageHtml({
@@ -75,17 +103,52 @@ exports.handler = async (event) => {
     }));
   }
 
-  const earlier = await getDecision(event, reservation.id);
-  if (earlier) return htmlResponse(200, alreadyPage(reservation, earlier.decision));
-
-  if (method === "GET") return htmlResponse(200, choicePage(reservation, token));
-
-  if (!isSameOrigin(event)) {
-    return htmlResponse(403, resultPageHtml({ title: "Forbidden", message: "" }));
+  // GET only ever shows the no-detail teaser, regardless of which link
+  // (confirm/decline) was clicked — the real choice is made on the next page
+  if (method === "GET") {
+    let earlier;
+    try {
+      earlier = await store.getJSON(event, `done:${reservation.id}`);
+    } catch (err) {
+      console.error("respond.js status check failed", err.message);
+      return htmlResponse(503, unavailablePage());
+    }
+    if (earlier) return htmlResponse(200, alreadyPage(reservation, earlier.decision));
+    return htmlResponse(200, teaserPage(token));
   }
 
-  // claim the link first so a double click cannot email the guest twice
-  await markDecision(event, reservation.id, action);
+  // POST action=view: a human pressed the button, now show the real details
+  if (action === "view") {
+    let earlier;
+    try {
+      earlier = await store.getJSON(event, `done:${reservation.id}`);
+    } catch (err) {
+      console.error("respond.js status check failed", err.message);
+      return htmlResponse(503, unavailablePage());
+    }
+    if (earlier) return htmlResponse(200, alreadyPage(reservation, earlier.decision));
+    return htmlResponse(200, choicePage(reservation, token));
+  }
+
+  // POST action=confirm|decline: atomically claim the link so a double
+  // click (or a race between two requests) cannot email the guest twice
+  let claimed;
+  try {
+    claimed = await store.claim(event, `done:${reservation.id}`, { decision: action, ts: Date.now() });
+  } catch (err) {
+    console.error("respond.js claim failed", err.message);
+    return htmlResponse(503, unavailablePage());
+  }
+  if (!claimed) {
+    let earlier;
+    try {
+      earlier = await store.getJSON(event, `done:${reservation.id}`);
+    } catch {
+      earlier = null;
+    }
+    return htmlResponse(200, alreadyPage(reservation, (earlier && earlier.decision) || action));
+  }
+
   const t = textFor(reservation.lang);
   try {
     if (action === "confirm") {
@@ -102,7 +165,7 @@ exports.handler = async (event) => {
     }));
   } catch (err) {
     console.error("respond.js email error", err.message);
-    await clearDecision(event, reservation.id);
+    await store.del(event, `done:${reservation.id}`); // release the claim so the owner can retry
     return htmlResponse(502, resultPageHtml({
       title: "Could not send email",
       message: "The email to the guest failed to send. Open the link in your email again and retry."

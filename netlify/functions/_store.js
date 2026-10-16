@@ -1,9 +1,11 @@
-/* Tiny key-value layer on Netlify Blobs, used only for abuse protection:
-   rate-limit counters (hashed keys) and "already answered" markers for the
+/* Key-value layer on Netlify Blobs, used only for abuse protection:
+   rate-limit counters (hashed keys) and one-time "claimed" markers for the
    confirm/decline links. No guest details are stored here.
 
-   Every call is best-effort: if the store is unavailable the guest-facing
-   flow still works (fail open) and the problem is logged. */
+   increment() and claim() use compare-and-swap (onlyIfNew/onlyIfMatch) so
+   concurrent requests cannot race each other, and they THROW on any store
+   failure — callers decide whether to fail open or closed. Only cleanup()
+   is best-effort: housekeeping must never block the guest-facing flow. */
 
 let backend = null; // tests inject a fake with setBackend()
 
@@ -23,31 +25,48 @@ function use(event) {
   return backend || realStore(event);
 }
 
-async function get(event, key) {
-  try {
-    return (await use(event).get(key, { type: "json" })) ?? null;
-  } catch (err) {
-    console.error("store.get failed", key.split(":")[0], err.message);
-    return null;
-  }
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function set(event, key, value) {
-  try {
-    await use(event).setJSON(key, value);
-    return true;
-  } catch (err) {
-    console.error("store.set failed", key.split(":")[0], err.message);
-    return false;
+/* atomic +1 via compare-and-swap; returns the new count. Retries with
+   jittered backoff under contention (many requests hitting the same
+   bucket at once) and only throws once that's genuinely exhausted or the
+   store itself is unreachable. */
+async function increment(event, key) {
+  const s = use(event);
+  const MAX_ATTEMPTS = 20;
+  for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
+    const existing = await s.getWithMetadata(key, { type: "json" });
+    const n = (existing && existing.data && existing.data.n) || 0;
+    const next = n + 1;
+    const result = existing
+      ? await s.setJSON(key, { n: next }, { onlyIfMatch: existing.etag })
+      : await s.setJSON(key, { n: next }, { onlyIfNew: true });
+    if (result.modified) return next;
+    if (attempt < MAX_ATTEMPTS - 1) {
+      await sleep(Math.random() * Math.min(20 * 2 ** attempt, 300));
+    }
   }
+  throw new Error("counter contention exceeded retries: " + key.split(":")[0]);
+}
+
+/* one-time claim: true if THIS call claimed it (first writer wins), false
+   if something else already claimed it. Throws on store error. */
+async function claim(event, key, value) {
+  const s = use(event);
+  const result = await s.setJSON(key, value, { onlyIfNew: true });
+  return result.modified;
+}
+
+async function getJSON(event, key) {
+  const s = use(event);
+  return (await s.get(key, { type: "json" })) ?? null;
 }
 
 async function del(event, key) {
-  try {
-    await use(event).delete(key);
-  } catch (err) {
-    console.error("store.delete failed", key.split(":")[0], err.message);
-  }
+  const s = use(event);
+  await s.delete(key);
 }
 
 /* remove stale markers so the store never grows without bound */
@@ -71,4 +90,4 @@ async function cleanup(event, { counterPrefixKeep, doneMaxAgeMs }) {
   }
 }
 
-module.exports = { setBackend, get, set, del, cleanup };
+module.exports = { setBackend, increment, claim, getJSON, del, cleanup };

@@ -95,6 +95,9 @@ exports.handler = async (event) => {
 
   const limit = await checkRateLimit(event, { email });
   if (!limit.allowed) {
+    if (limit.reason === "store-unavailable") {
+      return jsonResponse(503, { ok: false, error: "Could not process your request right now. Please try again shortly or call us." });
+    }
     console.warn("reservation rate-limited:", limit.reason);
     return jsonResponse(429, { ok: false, error: "Too many requests. Please try again later or call us." });
   }
