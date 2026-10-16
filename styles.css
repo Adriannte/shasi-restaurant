@@ -488,7 +488,11 @@ button { font-family: inherit; cursor: pointer; }
   .hero-actions { justify-content: center; }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 860px) {
+  /* same breakpoint as the layout-stacking block above: at tablet width
+     (e.g. 768px) the full desktop nav's 8 items don't fit the header and
+     the last one(s) get clipped off-screen — switch to the hamburger menu
+     here too instead of only below 760px */
   .main-nav {
     position: fixed; top: var(--header-h); left: 0; right: 0; background: var(--linen);
     flex-direction: column; gap: 0; padding: 8px 28px 24px; border-bottom: var(--hairline);
@@ -535,4 +539,4 @@ button { font-family: inherit; cursor: pointer; }
 /* ===== BRAND LOGO ===== */
 .brand-logo { height: 58px; width: auto; display: block; filter: invert(1); transition: filter .35s var(--ease); }
 .site-header.scrolled .brand-logo { filter: none; }
-@media (max-width: 760px) { .brand-logo { height: 50px; } }
+@media (max-width: 860px) { .brand-logo { height: 50px; } }
