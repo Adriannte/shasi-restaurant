@@ -150,6 +150,9 @@ button { font-family: inherit; cursor: pointer; }
   position: absolute;
   top: 0; right: 0; bottom: 0;
   width: 54%;
+  /* purely decorative (aria-hidden) — never intercept taps meant for the
+     page beneath/around it, including a stuck native video play button */
+  pointer-events: none;
 }
 /* seam starts below the fixed header so it doesn't cut through the nav */
 .hero-visual::before {

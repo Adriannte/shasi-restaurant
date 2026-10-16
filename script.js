@@ -249,12 +249,16 @@
     video.appendChild(source);
 
     const tryPlay = () => video.play().catch(() => {});
-    video.addEventListener("loadeddata", () => {
-      video.classList.add("ready");
-      tryPlay();
-    });
+    // Only reveal the video once it's ACTUALLY playing — not just loaded.
+    // iOS Low Power Mode (and similar battery-saver modes) blocks autoplay
+    // outright: play() rejects, but the video would still have enough data
+    // to show a paused frame with a native (non-functional, since taps on
+    // it don't satisfy the OS-level autoplay block) play button. Waiting
+    // for "playing" keeps the canvas fallback visible instead in that case.
+    video.addEventListener("playing", () => video.classList.add("ready"));
     // mobile networks often haven't buffered enough right after load() —
     // keep retrying as more data arrives instead of giving up after one try
+    video.addEventListener("loadeddata", tryPlay);
     video.addEventListener("canplay", tryPlay);
     video.addEventListener("canplaythrough", tryPlay);
     video.addEventListener("error", () => video.remove());
