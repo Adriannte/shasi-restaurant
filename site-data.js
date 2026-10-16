@@ -13,8 +13,8 @@ const SITE = {
   "turnstileSiteKey": "",
   "mapQuery": "Restaurant SHASI, Šasko jezero, Ulcinj, Montenegro",
   "mapEmbedSrc": "https://www.google.com/maps?q=Restaurant+SHASI+%C5%A0asko+jezero+Ulcinj&output=embed",
-  "heroVideo": "media/hero.mp4",
-  "heroPoster": "media/hero-poster.jpg"
+  "heroVideo": "/media/hero.mp4",
+  "heroPoster": "/media/hero-poster.jpg"
 };
 const HOURS = [
   {

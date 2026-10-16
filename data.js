@@ -34,8 +34,8 @@ const SITE = {
     "https://www.google.com/maps?q=Restaurant+SHASI+%C5%A0asko+jezero+Ulcinj&output=embed",
   // Drop a real clip at media/hero.mp4 (+ media/hero-poster.jpg) and it is
   // picked up automatically — the animated fallback only shows until then.
-  heroVideo: "media/hero.mp4",
-  heroPoster: "media/hero-poster.jpg"
+  heroVideo: "/media/hero.mp4",
+  heroPoster: "/media/hero-poster.jpg"
 };
 
 /* Seasonal opening hours */

@@ -60,7 +60,7 @@ function renderWine(lang) {
 function renderActivities(lang) {
   return data.ACTIVITIES_MENU.map((cat) => {
     const items = cat.items.map((item) => itemRow(item.name[lang], item.unit[lang], item.price)).join("");
-    const note = cat.note ? `<p class="menu-note" style="margin-top:10px">${esc(cat.note[lang])}</p>` : "";
+    const note = cat.note ? `<p class="menu-note menu-note-spaced">${esc(cat.note[lang])}</p>` : "";
     return `<div class="menu-category">
       <h3>${esc(cat.name[lang])}</h3>
       ${items}
