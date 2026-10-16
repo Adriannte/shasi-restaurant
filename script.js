@@ -54,6 +54,7 @@
 
   function initSearch() {
     const input = document.getElementById("menu-search");
+    if (!input) return; // no menu on this page (e.g. the privacy page)
     input.addEventListener("input", () => {
       searchTerm = input.value.trim().toLowerCase();
       applySearchFilter();
@@ -80,6 +81,7 @@
   /* ---------- reservations ---------- */
   function initReservationForm() {
     const form = document.getElementById("reservation-form");
+    if (!form) return; // no reservation form on this page (e.g. the privacy page)
     const status = document.getElementById("reservation-status");
     const submitBtn = document.getElementById("reserve-submit");
     const dateInput = form.querySelector('input[name="date"]');
@@ -192,6 +194,7 @@
   function initMoments() {
     const grid = document.getElementById("moments-embeds");
     const fallback = document.getElementById("moments-fallback");
+    if (!grid) return; // no moments section on this page (e.g. the privacy page)
 
     if (!MOMENTS || !MOMENTS.length) {
       fallback.hidden = false;
@@ -215,6 +218,14 @@
   /* ---------- header scroll state ---------- */
   function initHeaderScroll() {
     const header = document.querySelector(".site-header");
+    // the "scrolled" styling (dark text/logo) is the only one with enough
+    // contrast against a plain light page — pages with no dark hero to
+    // start over (e.g. the privacy page) should use it from the start,
+    // not just after scrolling 60px
+    if (!document.querySelector(".hero")) {
+      header.classList.add("scrolled");
+      return;
+    }
     const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 60);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -245,6 +256,7 @@
   /* ---------- cinematic hero: real video if present, animated fallback otherwise ---------- */
   function initHeroVideo() {
     const video = document.getElementById("hero-video");
+    if (!video) return; // no hero video on this page (e.g. the privacy page)
     if (!SITE.heroVideo) return;
     if (SITE.heroPoster) video.poster = SITE.heroPoster;
 
@@ -273,6 +285,7 @@
 
   function initHeroCanvas() {
     const canvas = document.getElementById("hero-canvas");
+    if (!canvas) return; // no hero on this page (e.g. the privacy page)
     const ctx = canvas.getContext("2d");
     let w, h, dpr;
 

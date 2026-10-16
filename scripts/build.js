@@ -68,7 +68,10 @@ const esc = R.esc;
 function header(lang, pagePath) {
   const t = data.UI[lang];
   const home = langPrefix(lang) + "/";
-  return `<header class="site-header" id="top">
+  // pages with no dark hero (currently: privacy) need the dark-text header
+  // styling from first paint, not just once script.js adds it on load
+  const scrolledClass = pagePath === "" ? "" : " scrolled";
+  return `<header class="site-header${scrolledClass}" id="top">
   <div class="header-inner">
     <a class="brand" href="${pagePath === "" ? "#top" : home}" aria-label="Restaurant SHASI"><img class="brand-logo" src="${rel("media/logo.svg")}" alt="Restaurant SHASI" width="58" height="58" /></a>
 
@@ -464,6 +467,7 @@ ${header(lang, "privacy/")}
 
 ${footer(lang, "privacy/")}
 
+<script src="${rel("script.js")}"></script>
 </body>
 </html>
 `;
