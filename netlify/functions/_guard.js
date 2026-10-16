@@ -66,7 +66,7 @@ async function checkRateLimit(event, { email }) {
     return { allowed: true };
   } catch (err) {
     console.error("rate-limit store unavailable, failing closed:", err.message);
-    return { allowed: false, reason: "store-unavailable" };
+    return { allowed: false, reason: "store-unavailable", detail: `${err.name}: ${err.message}` };
   }
 }
 
