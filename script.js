@@ -98,8 +98,13 @@
       ts.defer = true;
       document.head.appendChild(ts);
     }
+    // local calendar date, not UTC — toISOString() would show "yesterday"
+    // for anyone in a timezone ahead of UTC during the first hour or two
+    // of their day (e.g. Montenegro, UTC+1/+2)
+    const localISODate = (d) =>
+      d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
     const today = new Date();
-    dateInput.min = today.toISOString().slice(0, 10);
+    dateInput.min = localISODate(today);
 
     const toMin = (hhmm) => parseInt(hhmm.slice(0, 2), 10) * 60 + parseInt(hhmm.slice(3, 5), 10);
     const toHHMM = (m) =>
@@ -172,7 +177,7 @@
         if (!res.ok) throw new Error("request failed");
         showStatus("reserve_success", "success");
         form.reset();
-        dateInput.min = today.toISOString().slice(0, 10);
+        dateInput.min = localISODate(new Date());
         buildTimeSlots();
       } catch (err) {
         showStatus("reserve_error", "error");
