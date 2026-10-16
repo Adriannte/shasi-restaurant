@@ -18,7 +18,13 @@ function realStore(event) {
   if (event) {
     try { connectLambda(event); } catch { /* already connected */ }
   }
-  return getStore({ name: "shasi-guard", consistency: "strong" });
+  // "strong" consistency requires an edge config (uncachedEdgeURL) this
+  // site doesn't have, and our writes are already correct without it:
+  // increment()/claim() use conditional writes (onlyIfNew/onlyIfMatch),
+  // which the store enforces atomically regardless of read freshness. A
+  // stale read here only means an extra CAS retry, or a split-second-late
+  // "already confirmed" display — never a wrong count or a double-send.
+  return getStore({ name: "shasi-guard" });
 }
 
 function use(event) {
