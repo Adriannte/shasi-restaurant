@@ -11,7 +11,6 @@ const {
   esc,
   textFor
 } = require("./_shared");
-const { isSameOrigin } = require("./_guard");
 const store = require("./_store");
 
 const ENDPOINT = "/.netlify/functions/respond";
@@ -88,12 +87,12 @@ exports.handler = async (event) => {
   if (!["confirm", "decline", "view"].includes(action)) {
     return htmlResponse(400, resultPageHtml({ title: "Invalid link", message: "This reservation link is malformed." }));
   }
-  if (action !== "view" && method === "POST" && !isSameOrigin(event)) {
-    return htmlResponse(403, resultPageHtml({ title: "Forbidden", message: "" }));
-  }
-  if (action === "view" && !isSameOrigin(event)) {
-    return htmlResponse(403, resultPageHtml({ title: "Forbidden", message: "" }));
-  }
+  // No same-origin check here on purpose: the only thing that actually
+  // guards this endpoint is possessing the signed, single-use token (only
+  // ever sent to the owner's inbox). An Origin check would just be a
+  // stricter version of the same guarantee, and in practice some mail
+  // apps' embedded browsers (e.g. Gmail's in-app webview) don't send a
+  // matching Origin header on the form POST, which blocked real clicks.
 
   const reservation = verifyToken(token);
   if (!reservation || !reservation.id) {

@@ -261,12 +261,15 @@ test("pressing View & respond (POST action=view) reveals the details — still s
   assert.equal(sent.length, 0);
 });
 
-test("action=view without a matching Origin is refused (blocks passive/automated POSTs too)", async () => {
+test("action=view works regardless of Origin (token possession is the real guard, not Origin — some mail apps' webviews don't send a matching one)", async () => {
   const token = await makeToken();
   const res = await respond(postReq("view", token, { origin: "https://evil.example" }));
-  assert.equal(res.statusCode, 403);
+  assert.equal(res.statusCode, 200);
+  assert.match(res.body, /Confirm reservation/);
   const r2 = postReq("view", token); delete r2.headers.origin;
-  assert.equal((await respond(r2)).statusCode, 403);
+  const res2 = await respond(r2);
+  assert.equal(res2.statusCode, 200);
+  assert.match(res2.body, /Confirm reservation/);
 });
 
 test("confirm sends the guest email exactly once", async () => {
@@ -328,11 +331,12 @@ test("tampered, malformed and expired links are refused", async () => {
   assert.equal(sent.length, 0);
 });
 
-test("a cross-site POST to respond (confirm/decline) is refused", async () => {
+test("confirm/decline work regardless of Origin (token possession is the real guard)", async () => {
   const token = await makeToken();
   const res = await respond(postReq("confirm", token, { origin: "https://evil.example" }));
-  assert.equal(res.statusCode, 403);
-  assert.equal(sent.length, 0);
+  assert.equal(res.statusCode, 200);
+  assert.match(res.body, /Reservation confirmed/);
+  assert.equal(sent.length, 1);
 });
 
 test("guest-supplied text is escaped in the owner page and emails", async () => {
